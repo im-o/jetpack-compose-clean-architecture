@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Dicoding Submission - Jetpact Compose"
+rootProject.name = "Pokedex"
 include ':app'

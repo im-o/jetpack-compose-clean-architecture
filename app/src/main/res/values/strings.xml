@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Dicoding Submission - Jetpact Compose</string>
+    <string name="app_name">Pokedex</string>
     <string name="home">Home</string>
     <string name="favorite">Favorite</string>
     <string name="profile">Profile</string>

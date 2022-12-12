@@ -22,7 +22,7 @@ import com.rivaldy.id.compose.ui.navigation.Screen
 import com.rivaldy.id.compose.ui.screen.FavoriteScreen
 import com.rivaldy.id.compose.ui.screen.HomeScreen
 import com.rivaldy.id.compose.ui.screen.ProfileScreen
-import com.rivaldy.id.compose.ui.theme.DicodingSubmissionJetpactComposeTheme
+import com.rivaldy.id.compose.ui.theme.PokedexTheme
 
 /** Created by github.com/im-o on 12/12/2022. */
 
@@ -110,7 +110,7 @@ private fun BottomBar(
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    DicodingSubmissionJetpactComposeTheme {
+    PokedexTheme {
         MyApp()
     }
 }
