@@ -27,7 +27,7 @@ import com.rivaldy.id.compose.ui.theme.PokedexTheme
 /** Created by github.com/im-o on 12/12/2022. */
 
 @Composable
-fun MyApp(
+fun Pokedex(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
 ) {
@@ -111,6 +111,6 @@ private fun BottomBar(
 @Composable
 fun DefaultPreview() {
     PokedexTheme {
-        MyApp()
+        Pokedex()
     }
 }

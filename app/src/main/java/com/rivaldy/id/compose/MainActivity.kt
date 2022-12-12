@@ -15,7 +15,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             PokedexTheme {
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-                    MyApp()
+                    Pokedex()
                 }
             }
         }
