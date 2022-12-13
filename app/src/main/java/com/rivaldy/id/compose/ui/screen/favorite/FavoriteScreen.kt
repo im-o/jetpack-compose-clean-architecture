@@ -1,4 +1,4 @@
-package com.rivaldy.id.compose.ui.screen
+package com.rivaldy.id.compose.ui.screen.favorite
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable

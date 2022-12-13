@@ -19,9 +19,9 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.rivaldy.id.compose.ui.navigation.NavigationItem
 import com.rivaldy.id.compose.ui.navigation.Screen
-import com.rivaldy.id.compose.ui.screen.FavoriteScreen
-import com.rivaldy.id.compose.ui.screen.HomeScreen
-import com.rivaldy.id.compose.ui.screen.ProfileScreen
+import com.rivaldy.id.compose.ui.screen.favorite.FavoriteScreen
+import com.rivaldy.id.compose.ui.screen.home.HomeScreen
+import com.rivaldy.id.compose.ui.screen.profile.ProfileScreen
 import com.rivaldy.id.compose.ui.theme.JetShopeeTheme
 
 /** Created by github.com/im-o on 12/12/2022. */

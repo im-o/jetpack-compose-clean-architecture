@@ -26,6 +26,7 @@ object MyDependencies {
     const val retrofit2_converter_gson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit_version}"
     const val retrofit2_adapter_rxjava2 = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit_version}"
     const val okhttp3 = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttp3_version}"
+    const val coil = "io.coil-kt:coil-compose:${Versions.coil_version}"
 
     //Hilt
     const val hilt_android = "com.google.dagger:hilt-android:${Versions.hilt_android}"
