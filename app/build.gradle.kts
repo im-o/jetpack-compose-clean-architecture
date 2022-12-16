@@ -3,6 +3,8 @@ import dependencies.MyDependencies
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("dagger.hilt.android.plugin")
+    id("kotlin-kapt")
 }
 
 android {
@@ -58,4 +60,8 @@ dependencies {
     androidTestImplementation(MyDependencies.junit_compose)
     debugImplementation(MyDependencies.ui_tooling)
     debugImplementation(MyDependencies.ui_test_manifest)
+
+    // Hilt
+    implementation(MyDependencies.hilt_android)
+    kapt(MyDependencies.hilt_android_compiler)
 }

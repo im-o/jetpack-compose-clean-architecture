@@ -31,7 +31,7 @@ object MyDependencies {
     //Hilt
     const val hilt_android = "com.google.dagger:hilt-android:${Versions.hilt_android}"
     const val hilt_android_compiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt_android}"
-    const val hilt_navigation = "androidx.hilt:hilt-navigation-fragment:${Versions.hilt_navigation}"
+    const val hilt_navigation_compose = "androidx.hilt:hilt-navigation-compose:${Versions.hilt_navigation}"
     const val lifecycle_viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle_ktx_version}"
 
     //Room

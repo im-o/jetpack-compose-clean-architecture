@@ -22,7 +22,7 @@ object Versions {
 
     const val retrofit_version = "2.9.0"
     const val okHttp3_version = "4.9.3"
-    const val coil_version = "2.2.0"
+    const val coil_version = "2.2.2"
     const val hilt_android = "2.38.1"
     const val hilt_navigation = "1.0.0"
     const val room_version = "2.4.3"

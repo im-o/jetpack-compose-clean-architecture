@@ -3,6 +3,8 @@ import dependencies.MyDependencies
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("dagger.hilt.android.plugin")
+    id("kotlin-kapt")
 }
 
 android {
@@ -61,4 +63,11 @@ dependencies {
 
     // COIL
     api(MyDependencies.coil)
+
+    // Hilt
+    implementation(MyDependencies.hilt_android)
+    kapt(MyDependencies.hilt_android_compiler)
+    api(MyDependencies.hilt_navigation_compose) {
+        exclude("androidx.lifecycle", "lifecycle-viewmodel-ktx")
+    }
 }
