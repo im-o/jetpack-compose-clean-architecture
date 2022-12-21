@@ -1,11 +1,13 @@
 package com.rivaldy.id.compose.ui.screen.home
 
-import androidx.annotation.WorkerThread
 import androidx.lifecycle.ViewModel
-import com.rivaldy.id.core.data.model.ProductResponse
+import androidx.lifecycle.viewModelScope
+import com.rivaldy.id.core.data.model.Product
 import com.rivaldy.id.core.data.repository.ProductRepositoryImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /** Created by github.com/im-o on 12/16/2022. */
@@ -15,8 +17,17 @@ class HomeViewModel @Inject constructor(
     private val repository: ProductRepositoryImpl
 ) : ViewModel() {
 
-    @WorkerThread
-    fun fetchProductsApiCall(): Flow<Result<ProductResponse>> {
-        return repository.fetchProductsApiCall()
+    private val _listProduct: MutableStateFlow<MutableList<Product?>?> = MutableStateFlow(mutableListOf())
+    val listProduct = _listProduct.asStateFlow()
+
+    fun fetchProductsApiCall() = viewModelScope.launch {
+        repository.fetchProductsApiCall().collect { result ->
+            result.onSuccess {
+                _listProduct.emit(it.products)
+            }
+            result.onFailure {
+                _listProduct.emit(mutableListOf())
+            }
+        }
     }
 }

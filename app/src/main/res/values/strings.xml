@@ -4,4 +4,6 @@
     <string name="favorite">Favorite</string>
     <string name="profile">Profile</string>
     <string name="product_thumbnail">Product Thumbnail</string>
+    <string name="no_product">No Product List</string>
+    <string name="load_product">Load Product…</string>
 </resources>
