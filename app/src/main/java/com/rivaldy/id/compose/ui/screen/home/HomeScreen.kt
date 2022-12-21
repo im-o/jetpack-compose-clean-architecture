@@ -16,7 +16,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.rivaldy.id.compose.R
 import com.rivaldy.id.compose.ui.components.ProductItem
 import com.rivaldy.id.compose.ui.theme.Gray200
+import com.rivaldy.id.core.data.UiState
 import com.rivaldy.id.core.data.model.Product
+import com.rivaldy.id.core.data.model.ProductResponse
 
 /** Created by github.com/im-o on 12/12/2022. */
 
@@ -25,40 +27,57 @@ fun HomeScreen(
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
-
-    val listProduct = viewModel.listProduct.collectAsState().value
-    viewModel.fetchProductsApiCall()
-
     Box(
         contentAlignment = Alignment.Center,
         modifier = modifier
             .fillMaxSize()
             .background(Gray200)
     ) {
-        if (listProduct?.isEmpty() == true) {
-            Column {
-                CircularProgressIndicator(
-                    modifier = modifier
-                        .fillMaxWidth()
-                        .wrapContentWidth(Alignment.CenterHorizontally)
-                )
-                Spacer(modifier = Modifier.size(32.dp))
-                Text(
-                    modifier = modifier
-                        .fillMaxWidth()
-                        .wrapContentWidth(Alignment.CenterHorizontally),
-                    text = stringResource(R.string.load_product)
-                )
-            }
-        } else {
-            if (listProduct != null) LazyVerticalGrid(columns = GridCells.Fixed(2), content = {
-                items(listProduct.size) { index ->
-                    ProductItem(
-                        product = listProduct[index] ?: Product(), modifier = modifier.fillMaxWidth()
-                    )
+        viewModel.uiStateProduct.collectAsState(initial = UiState.Loading).value.let { uiState ->
+            when (uiState) {
+                is UiState.Loading -> {
+                    viewModel.fetchProductsApiCall()
+                    ShowLoading(modifier)
                 }
-            }, contentPadding = PaddingValues(8.dp))
-            else Text(text = stringResource(R.string.no_product))
+                is UiState.Success -> {
+                    ShowProduct(modifier, uiState)
+                }
+                is UiState.Error -> {
+                    Text(text = stringResource(R.string.error_product))
+                }
+            }
         }
     }
+}
+
+@Composable
+fun ShowLoading(modifier: Modifier) {
+    Column {
+        CircularProgressIndicator(
+            modifier = modifier
+                .fillMaxWidth()
+                .wrapContentWidth(Alignment.CenterHorizontally)
+        )
+        Spacer(modifier = Modifier.size(32.dp))
+        Text(
+            modifier = modifier
+                .fillMaxWidth()
+                .wrapContentWidth(Alignment.CenterHorizontally),
+            text = stringResource(R.string.load_product)
+        )
+    }
+}
+
+@Composable
+fun ShowProduct(modifier: Modifier, uiState: UiState.Success<ProductResponse>) {
+    val listProduct = uiState.data.products
+    if (listProduct != null) LazyVerticalGrid(columns = GridCells.Fixed(2), content = {
+        items(listProduct.size) { index ->
+            ProductItem(
+                product = listProduct[index] ?: Product(),
+                modifier = modifier.fillMaxWidth()
+            )
+        }
+    }, contentPadding = PaddingValues(8.dp))
+    else Text(text = stringResource(R.string.no_product))
 }
