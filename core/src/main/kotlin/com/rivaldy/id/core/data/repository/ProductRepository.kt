@@ -1,10 +1,12 @@
 package com.rivaldy.id.core.data.repository
 
+import com.rivaldy.id.core.data.model.Product
 import com.rivaldy.id.core.data.model.ProductResponse
 import kotlinx.coroutines.flow.Flow
 
 /** Created by github.com/im-o on 12/16/2022. */
 
 interface ProductRepository {
-    suspend fun fetchProductsApiCall(): Flow<ProductResponse>
+    suspend fun getProductsApiCall(): Flow<ProductResponse>
+    suspend fun getProductByIdApiCall(id: Int): Flow<Product>
 }

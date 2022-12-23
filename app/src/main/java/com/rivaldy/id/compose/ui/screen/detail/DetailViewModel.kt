@@ -1,9 +1,9 @@
-package com.rivaldy.id.compose.ui.screen.home
+package com.rivaldy.id.compose.ui.screen.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rivaldy.id.core.data.UiState
-import com.rivaldy.id.core.data.model.ProductResponse
+import com.rivaldy.id.core.data.model.Product
 import com.rivaldy.id.core.data.repository.ProductRepositoryImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,18 +15,18 @@ import javax.inject.Inject
 /** Created by github.com/im-o on 12/16/2022. */
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
+class DetailViewModel @Inject constructor(
     private val repository: ProductRepositoryImpl
 ) : ViewModel() {
 
-    private val _uiStateProduct: MutableStateFlow<UiState<ProductResponse>> = MutableStateFlow(UiState.Loading)
-    val uiStateProduct: StateFlow<UiState<ProductResponse>>
+    private val _uiStateProduct: MutableStateFlow<UiState<Product>> = MutableStateFlow(UiState.Loading)
+    val uiStateProduct: StateFlow<UiState<Product>>
         get() = _uiStateProduct
 
-    fun getProductsApiCall() {
+    fun getProductsApiCall(id: Int) {
         viewModelScope.launch {
             try {
-                repository.getProductsApiCall()
+                repository.getProductByIdApiCall(id)
                     .catch {
                         _uiStateProduct.value = UiState.Error(it.message.toString())
                     }

@@ -26,11 +26,6 @@ object Versions {
     const val hilt_android = "2.38.1"
     const val hilt_navigation = "1.0.0"
     const val room_version = "2.4.3"
-    const val splash_screen_version = "1.0.0"
-    const val facebook_shimmer_version = "0.5.0"
     const val glide_version = "4.14.2"
-    const val joda_version = "2.12.0"
-    const val swipe_refresh_version = "1.1.0"
-    const val camerax_version = "1.1.0-beta01"
     const val compose_ui_version = "1.3.1"
 }

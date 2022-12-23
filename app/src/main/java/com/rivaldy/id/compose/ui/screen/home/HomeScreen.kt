@@ -1,9 +1,11 @@
 package com.rivaldy.id.compose.ui.screen.home
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -18,14 +20,14 @@ import com.rivaldy.id.compose.ui.components.ProductItem
 import com.rivaldy.id.compose.ui.theme.Gray200
 import com.rivaldy.id.core.data.UiState
 import com.rivaldy.id.core.data.model.Product
-import com.rivaldy.id.core.data.model.ProductResponse
 
 /** Created by github.com/im-o on 12/12/2022. */
 
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
-    viewModel: HomeViewModel = hiltViewModel()
+    viewModel: HomeViewModel = hiltViewModel(),
+    navigateToDetail: (Int) -> Unit,
 ) {
     Box(
         contentAlignment = Alignment.Center,
@@ -36,11 +38,15 @@ fun HomeScreen(
         viewModel.uiStateProduct.collectAsState(initial = UiState.Loading).value.let { uiState ->
             when (uiState) {
                 is UiState.Loading -> {
-                    viewModel.fetchProductsApiCall()
-                    ShowLoading(modifier)
+                    viewModel.getProductsApiCall()
+                    LoadingProgress(modifier)
                 }
                 is UiState.Success -> {
-                    ShowProduct(modifier, uiState)
+                    HomeContent(
+                        modifier = modifier,
+                        listProduct = uiState.data.products,
+                        navigateToDetail = navigateToDetail
+                    )
                 }
                 is UiState.Error -> {
                     Text(text = stringResource(R.string.error_product))
@@ -51,7 +57,7 @@ fun HomeScreen(
 }
 
 @Composable
-fun ShowLoading(modifier: Modifier) {
+fun LoadingProgress(modifier: Modifier) {
     Column {
         CircularProgressIndicator(
             modifier = modifier
@@ -69,15 +75,25 @@ fun ShowLoading(modifier: Modifier) {
 }
 
 @Composable
-fun ShowProduct(modifier: Modifier, uiState: UiState.Success<ProductResponse>) {
-    val listProduct = uiState.data.products
-    if (listProduct != null) LazyVerticalGrid(columns = GridCells.Fixed(2), content = {
-        items(listProduct.size) { index ->
-            ProductItem(
-                product = listProduct[index] ?: Product(),
-                modifier = modifier.fillMaxWidth()
-            )
-        }
-    }, contentPadding = PaddingValues(8.dp))
+fun HomeContent(
+    modifier: Modifier,
+    listProduct: MutableList<Product>?,
+    navigateToDetail: (Int) -> Unit
+) {
+    if (listProduct != null) LazyVerticalGrid(
+        columns = GridCells.Adaptive(180.dp),
+        content = {
+            items(listProduct) { product ->
+                ProductItem(
+                    product = product,
+                    modifier = modifier
+                        .fillMaxWidth()
+                        .clickable {
+                            navigateToDetail(product.id ?: return@clickable)
+                        }
+                )
+            }
+        }, contentPadding = PaddingValues(8.dp)
+    )
     else Text(text = stringResource(R.string.no_product))
 }

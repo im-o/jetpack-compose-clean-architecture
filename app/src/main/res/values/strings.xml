@@ -7,4 +7,5 @@
     <string name="no_product">No Product List</string>
     <string name="load_product">Load Product…</string>
     <string name="error_product">Can\'t load product, try again.</string>
+    <string name="detail_product">Detail Product</string>
 </resources>

@@ -10,15 +10,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.rivaldy.id.compose.ui.navigation.NavigationItem
 import com.rivaldy.id.compose.ui.navigation.Screen
+import com.rivaldy.id.compose.ui.screen.detail.DetailScreen
 import com.rivaldy.id.compose.ui.screen.favorite.FavoriteScreen
 import com.rivaldy.id.compose.ui.screen.home.HomeScreen
 import com.rivaldy.id.compose.ui.screen.profile.ProfileScreen
@@ -31,10 +35,15 @@ fun JetShopee(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
 ) {
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntry?.destination?.route
+
     Scaffold(
         modifier = modifier,
         bottomBar = {
-            BottomBar(navController = navController)
+            if (currentRoute != Screen.DetailProduct.route) {
+                BottomBar(navController)
+            }
         },
     ) { innerPadding ->
         NavHost(
@@ -43,13 +52,29 @@ fun JetShopee(
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(Screen.Home.route) {
-                HomeScreen()
+                HomeScreen(
+                    navigateToDetail = { productId ->
+                        navController.navigate(Screen.DetailProduct.createRoute(productId))
+                    }
+                )
             }
             composable(Screen.Favorite.route) {
                 FavoriteScreen()
             }
             composable(Screen.Profile.route) {
                 ProfileScreen()
+            }
+            composable(
+                route = Screen.DetailProduct.route,
+                arguments = listOf(navArgument("productId") { type = NavType.IntType }),
+            ) {
+                val id = it.arguments?.getInt("productId") ?: -1
+                DetailScreen(
+                    productId = id,
+                    navigateBack = {
+                        navController.navigateUp()
+                    },
+                )
             }
         }
     }
@@ -107,7 +132,7 @@ private fun BottomBar(
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, device = Devices.PIXEL_4)
 @Composable
 fun DefaultPreview() {
     JetShopeeTheme {

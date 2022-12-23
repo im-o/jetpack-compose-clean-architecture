@@ -1,5 +1,6 @@
 package com.rivaldy.id.core.data.datasource.remote
 
+import com.rivaldy.id.core.data.model.Product
 import com.rivaldy.id.core.data.model.ProductResponse
 import retrofit2.http.*
 
@@ -7,5 +8,10 @@ import retrofit2.http.*
 
 interface ApiService {
     @GET("products")
-    suspend fun fetchProducts(): ProductResponse
+    suspend fun getProducts(): ProductResponse
+
+    @GET("products/{id}")
+    suspend fun getProductById(
+        @Path("id") id: Int
+    ): Product
 }
