@@ -1,12 +1,12 @@
 package com.rivaldy.id.compose.ui.screen.detail
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -14,6 +14,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
@@ -60,7 +61,6 @@ fun DetailScreen(
                     .fillMaxSize()
                     .background(Gray200)
                     .padding(it)
-                    .fillMaxSize(),
             ) {
                 viewModel.uiStateProduct.collectAsState(initial = UiState.Loading).value.let { uiState ->
                     when (uiState) {
@@ -82,19 +82,57 @@ fun DetailScreen(
 
 @Composable
 fun DetailContent(product: Product) {
+    var buyText by remember { mutableStateOf(("BUY")) }
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = Color.White)
+            .fillMaxHeight()
+            .background(color = Color.White),
     ) {
         ImageProductPager(product = product)
-        DescriptionProduct(product = product)
+        TitleProduct(product = product)
         Divider(color = Gray200, thickness = 10.dp)
+        DescriptionProduct(product = product)
+
+    }
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        Alignment.BottomStart
+    )
+    {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ) {
+            Text(
+                text = "Add to Cart",
+                modifier = Modifier
+                    .background(MaterialTheme.colors.secondary)
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .padding(vertical = 20.dp),
+                textAlign = TextAlign.Center,
+                color = Color.White,
+            )
+            Text(
+                text = buyText,
+                modifier = Modifier
+                    .background(MaterialTheme.colors.primary)
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .padding(vertical = 20.dp)
+                    .clickable {
+                        buyText = "Thank You."
+                    },
+                color = Color.White,
+                textAlign = TextAlign.Center,
+            )
+        }
     }
 }
 
 @Composable
-fun DescriptionProduct(product: Product) {
+fun TitleProduct(product: Product) {
     Column(
         modifier = Modifier.padding(
             horizontal = 16.dp,
@@ -116,6 +154,32 @@ fun DescriptionProduct(product: Product) {
                 fontWeight = FontWeight.Light, fontSize = 20.sp
             ),
             color = MaterialTheme.colors.secondary
+        )
+    }
+}
+
+@Composable
+fun DescriptionProduct(product: Product) {
+    Column(
+        modifier = Modifier.padding(
+            horizontal = 16.dp,
+            vertical = 16.dp
+        )
+    ) {
+        Text(
+            text = stringResource(R.string.description),
+            style = MaterialTheme.typography.subtitle1.copy(
+                fontWeight = FontWeight.Normal, fontSize = 18.sp
+            ),
+            color = Color.Black
+        )
+        Spacer(modifier = Modifier.size(8.dp))
+        Text(
+            text = product.description ?: stringResource(R.string.dash),
+            style = MaterialTheme.typography.subtitle2.copy(
+                fontWeight = FontWeight.Light, fontSize = 16.sp
+            ),
+            color = Color.DarkGray
         )
     }
 }
