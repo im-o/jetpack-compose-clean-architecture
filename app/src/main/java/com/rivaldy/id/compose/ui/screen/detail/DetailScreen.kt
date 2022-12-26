@@ -13,9 +13,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
@@ -25,6 +28,7 @@ import com.rivaldy.id.compose.ui.theme.Gray200
 import com.rivaldy.id.compose.ui.theme.JetShopeeTheme
 import com.rivaldy.id.core.data.UiState
 import com.rivaldy.id.core.data.model.Product
+import com.rivaldy.id.core.util.UtilFunctions.fromDollarToRupiah
 
 /** Created by github.com/im-o on 12/22/2022. */
 
@@ -42,44 +46,36 @@ fun DetailScreen(
                 },
                 navigationIcon = {
                     IconButton(onClick = { navigateBack() }) {
-                        Icon(Icons.Filled.ArrowBack, "backIcon")
+                        Icon(Icons.Filled.ArrowBack, "Back Icon")
                     }
                 },
                 backgroundColor = MaterialTheme.colors.primary,
                 contentColor = Color.White,
-                elevation = 10.dp
+                elevation = 0.dp
             )
         }, content = {
-            Column(
+            Box(
+                contentAlignment = Alignment.Center,
                 modifier = Modifier
-                    .padding(it)
                     .fillMaxSize()
-                    .background(Color(0xff8d6e63)),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
+                    .background(Gray200)
+                    .padding(it)
+                    .fillMaxSize(),
             ) {
-                Box(
-                    contentAlignment = Alignment.Center,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(Gray200)
-                ) {
-                    viewModel.uiStateProduct.collectAsState(initial = UiState.Loading).value.let { uiState ->
-                        when (uiState) {
-                            is UiState.Loading -> {
-                                Text(text = "Loading")
-                                viewModel.getProductsApiCall(productId)
-                            }
-                            is UiState.Success -> {
-                                DetailContent(uiState.data)
-                            }
-                            is UiState.Error -> {
-                                Text(text = stringResource(R.string.error_product))
-                            }
+                viewModel.uiStateProduct.collectAsState(initial = UiState.Loading).value.let { uiState ->
+                    when (uiState) {
+                        is UiState.Loading -> {
+                            LoadingProgress()
+                            viewModel.getProductsApiCall(productId)
+                        }
+                        is UiState.Success -> {
+                            DetailContent(uiState.data)
+                        }
+                        is UiState.Error -> {
+                            Text(text = stringResource(R.string.error_product))
                         }
                     }
                 }
-
             }
         })
 }
@@ -92,6 +88,53 @@ fun DetailContent(product: Product) {
             .background(color = Color.White)
     ) {
         ImageProductPager(product = product)
+        DescriptionProduct(product = product)
+        Divider(color = Gray200, thickness = 10.dp)
+    }
+}
+
+@Composable
+fun DescriptionProduct(product: Product) {
+    Column(
+        modifier = Modifier.padding(
+            horizontal = 16.dp,
+            vertical = 8.dp
+        )
+    ) {
+        Text(
+            text = product.title ?: "",
+            maxLines = 2,
+            overflow = TextOverflow.Ellipsis,
+            style = MaterialTheme.typography.subtitle1.copy(
+                fontWeight = FontWeight.Normal, fontSize = 28.sp
+            ),
+            color = Color.Black
+        )
+        Text(
+            text = product.price.fromDollarToRupiah(),
+            style = MaterialTheme.typography.subtitle2.copy(
+                fontWeight = FontWeight.Light, fontSize = 20.sp
+            ),
+            color = MaterialTheme.colors.secondary
+        )
+    }
+}
+
+@Composable
+fun LoadingProgress() {
+    Column {
+        CircularProgressIndicator(
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentWidth(Alignment.CenterHorizontally)
+        )
+        Spacer(modifier = Modifier.size(32.dp))
+        Text(
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentWidth(Alignment.CenterHorizontally),
+            text = stringResource(R.string.load_product)
+        )
     }
 }
 
@@ -118,7 +161,7 @@ fun ImageProductPager(product: Product) {
             },
             contentDescription = stringResource(R.string.product_thumbnail),
             contentScale = ContentScale.Fit,
-            modifier = Modifier.height(200.dp)
+            modifier = Modifier.height(260.dp)
         )
     }
 

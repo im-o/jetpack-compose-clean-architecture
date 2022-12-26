@@ -9,7 +9,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -21,9 +20,9 @@ import androidx.compose.ui.unit.dp
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
 import com.rivaldy.id.compose.R
-import com.rivaldy.id.compose.ui.theme.Gray100
-import com.rivaldy.id.compose.ui.theme.Shapes
+import com.rivaldy.id.compose.ui.theme.Gray200
 import com.rivaldy.id.core.data.model.Product
+import com.rivaldy.id.core.util.UtilFunctions.fromDollarToRupiah
 
 @Composable
 fun ProductItem(
@@ -36,7 +35,6 @@ fun ProductItem(
         modifier = modifier
             .padding(8.dp)
             .defaultMinSize()
-            .clip(Shapes.medium)
     ) {
         Column(
             modifier = modifier.defaultMinSize()
@@ -54,24 +52,25 @@ fun ProductItem(
                 },
                 contentDescription = stringResource(R.string.product_thumbnail),
                 contentScale = ContentScale.Crop,
-                modifier = modifier
-                    .height(180.dp)
-                    .clip(Shapes.medium)
+                modifier = modifier.height(180.dp)
             )
-            Divider(color = Gray100, thickness = 1.dp)
+            Divider(color = Gray200, thickness = 1.dp)
             Column(
                 modifier = modifier.padding(horizontal = 16.dp, vertical = 8.dp)
             ) {
                 Text(
                     text = product.title ?: "",
-                    maxLines = 2,
+                    maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                     style = MaterialTheme.typography.subtitle1.copy(
                         fontWeight = FontWeight.ExtraBold
-                    )
+                    ),
+                    color = Color.Black
                 )
                 Text(
-                    text = "${product.price}",
+                    text = product.price.fromDollarToRupiah(),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
                     style = MaterialTheme.typography.subtitle2,
                     color = MaterialTheme.colors.secondary
                 )
