@@ -10,11 +10,16 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import coil.compose.SubcomposeAsyncImage
+import coil.request.ImageRequest
+import com.google.accompanist.pager.*
 import com.rivaldy.id.compose.R
 import com.rivaldy.id.compose.ui.theme.Gray200
 import com.rivaldy.id.compose.ui.theme.JetShopeeTheme
@@ -81,7 +86,72 @@ fun DetailScreen(
 
 @Composable
 fun DetailContent(product: Product) {
-    Text(text = "Success : $product")
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = Color.White)
+    ) {
+        ImageProductPager(product = product)
+    }
+}
+
+@OptIn(ExperimentalPagerApi::class)
+@Composable
+fun ImageProductPager(product: Product) {
+    val items = product.images
+    val pagerState = rememberPagerState()
+
+    HorizontalPager(
+        count = items?.size ?: 0,
+        state = pagerState
+    ) { page ->
+        SubcomposeAsyncImage(
+            model = ImageRequest.Builder(LocalContext.current)
+                .data(items?.get(page))
+                .crossfade(true)
+                .build(),
+            loading = {
+                CircularProgressIndicator(
+                    color = Color.LightGray,
+                    modifier = Modifier.padding(48.dp)
+                )
+            },
+            contentDescription = stringResource(R.string.product_thumbnail),
+            contentScale = ContentScale.Fit,
+            modifier = Modifier.height(200.dp)
+        )
+    }
+
+    HorizontalTabs(
+        items = items ?: emptyList<String>(),
+        pagerState = pagerState
+    )
+}
+
+@OptIn(ExperimentalPagerApi::class)
+@Composable
+fun HorizontalTabs(
+    items: List<String?>?,
+    pagerState: PagerState,
+) {
+    TabRow(
+        modifier = Modifier.height(1.dp),
+        backgroundColor = Color.White,
+        divider = {},
+        selectedTabIndex = pagerState.currentPage,
+        indicator = { tabPositions ->
+            TabRowDefaults.Indicator(
+                modifier = Modifier.pagerTabIndicatorOffset(pagerState, tabPositions)
+            )
+        }
+    ) {
+        items?.forEachIndexed { index, _ ->
+            Tab(
+                selected = pagerState.currentPage == index,
+                onClick = { }
+            )
+        }
+    }
 }
 
 @Preview(showBackground = true, device = Devices.PIXEL_4)

@@ -10,7 +10,6 @@ object MyDependencies {
     const val ui_compose = "androidx.compose.ui:ui:${Versions.compose_ui_version}"
     const val ui_tooling_preview = "androidx.compose.ui:ui-tooling-preview:${Versions.compose_ui_version}"
 
-    const val appcompat = "androidx.appcompat:appcompat:${Versions.app_compat_version}"
     const val material_compose = "androidx.compose.material:material:${Versions.material_compose_version}"
     const val junit = "junit:junit:${Versions.junit_version}"
     const val test_ext_junit = "androidx.test.ext:junit:${Versions.test_ext_junit_version}"
@@ -32,10 +31,13 @@ object MyDependencies {
     const val hilt_android = "com.google.dagger:hilt-android:${Versions.hilt_android}"
     const val hilt_android_compiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt_android}"
     const val hilt_navigation_compose = "androidx.hilt:hilt-navigation-compose:${Versions.hilt_navigation}"
-    const val lifecycle_viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle_ktx_version}"
 
     //Room
     const val room = "androidx.room:room-runtime:${Versions.room_version}"
     const val room_kapt = "androidx.room:room-compiler:${Versions.room_version}"
     const val room_ktx = "androidx.room:room-ktx:${Versions.room_version}" // optional - Kotlin Extensions and Coroutines support for Room
+
+    //PAGER
+    const val accompanist_pager = "com.google.accompanist:accompanist-pager:${Versions.accompanist_pager_version}"
+    const val accompanist_pager_indicator = "com.google.accompanist:accompanist-pager-indicators:${Versions.accompanist_pager_version}"
 }

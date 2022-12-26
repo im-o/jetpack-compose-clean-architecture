@@ -70,4 +70,9 @@ dependencies {
     api(MyDependencies.hilt_navigation_compose) {
         exclude("androidx.lifecycle", "lifecycle-viewmodel-ktx")
     }
+
+    // PAGER
+    api(MyDependencies.accompanist_pager)
+    api(MyDependencies.accompanist_pager_indicator)
+
 }
