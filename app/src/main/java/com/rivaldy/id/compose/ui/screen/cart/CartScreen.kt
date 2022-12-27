@@ -100,6 +100,7 @@ fun CartContent(
         modifier = Modifier.fillMaxSize(),
         content = {
             items(products, key = { it.id ?: -1 }) { product ->
+                val strRemoveCart = stringResource(id = R.string.remove_from_cart_, product.title.toString())
                 ProductCartItem(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -111,7 +112,7 @@ fun CartContent(
                     onRemoveClicked = {
                         viewModel.deleteProductDb(product)
                         Toast
-                            .makeText(context, "Remove ${product.title} from cart.", Toast.LENGTH_SHORT)
+                            .makeText(context, strRemoveCart, Toast.LENGTH_SHORT)
                             .show()
                     }
                 )

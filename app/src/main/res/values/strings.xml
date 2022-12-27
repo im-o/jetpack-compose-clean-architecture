@@ -11,4 +11,9 @@
     <string name="description">Description</string>
     <string name="dash">-</string>
     <string name="search_product">Search Product…</string>
+    <string name="buy">BUY</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="added_to_cart">Added to cart!</string>
+    <string name="thank_you_buy">Thank you for buying.</string>
+    <string name="remove_from_cart_">Remove $s from cart.</string>
 </resources>

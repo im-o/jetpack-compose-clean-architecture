@@ -83,9 +83,13 @@ private fun DetailContent(
     product: Product,
     viewModel: DetailViewModel
 ) {
-    var buyText by remember { mutableStateOf(("BUY")) }
-    var alreadyOnCart by remember { mutableStateOf(false) }
     val context = LocalContext.current
+    val strBuy = stringResource(R.string.buy)
+    val strAddedCart = stringResource(R.string.added_to_cart)
+    val strThanks = stringResource(R.string.thank_you_buy)
+
+    var buyText by remember { mutableStateOf(strBuy) }
+    var isAlreadyOnCart by remember { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
@@ -99,6 +103,7 @@ private fun DetailContent(
         DescriptionProduct(product = product)
 
     }
+
     Box(
         modifier = Modifier.fillMaxSize(),
         Alignment.BottomStart
@@ -114,14 +119,14 @@ private fun DetailContent(
                         viewModel.getProductByIdDb(product.id?.toLong() ?: -1)
                     }
                     is UiState.Success -> {
-                        alreadyOnCart = true
+                        isAlreadyOnCart = true
                     }
                     is UiState.Error -> {}
                 }
             }
-            if (!alreadyOnCart) {
+            if (!isAlreadyOnCart) {
                 Text(
-                    text = "Add to Cart",
+                    text = stringResource(R.string.add_to_cart),
                     modifier = Modifier
                         .background(MaterialTheme.colors.secondary)
                         .fillMaxWidth()
@@ -129,7 +134,7 @@ private fun DetailContent(
                         .padding(vertical = 20.dp)
                         .clickable {
                             Toast
-                                .makeText(context, "Added to cart!", Toast.LENGTH_SHORT)
+                                .makeText(context, strAddedCart, Toast.LENGTH_SHORT)
                                 .show()
                             viewModel.insertProductDb(product)
                         },
@@ -145,11 +150,10 @@ private fun DetailContent(
                     .weight(1f)
                     .padding(vertical = 20.dp)
                     .clickable {
-                        val thanks = "Thank you for buying."
                         Toast
-                            .makeText(context, thanks, Toast.LENGTH_SHORT)
+                            .makeText(context, strThanks, Toast.LENGTH_SHORT)
                             .show()
-                        buyText = thanks
+                        buyText = strThanks
                     },
                 color = Color.White,
                 textAlign = TextAlign.Center,

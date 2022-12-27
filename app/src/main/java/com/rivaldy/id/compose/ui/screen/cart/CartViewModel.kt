@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import com.rivaldy.id.core.data.UiState
 import com.rivaldy.id.core.data.datasource.local.db.entity.ProductEntity
 import com.rivaldy.id.core.data.repository.DbProductRepositoryImpl
-import com.rivaldy.id.core.util.UtilFunctions.logE
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -43,7 +42,6 @@ class CartViewModel @Inject constructor(
     fun deleteProductDb(product: ProductEntity) {
         viewModelScope.launch {
             val intDelete = dbRepository.deleteProductDb(product)
-            logE("intDelete : $intDelete")
             if (intDelete == 1) getProductsDb()
         }
     }
