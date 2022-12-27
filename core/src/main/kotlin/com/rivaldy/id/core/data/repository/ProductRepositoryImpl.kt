@@ -17,6 +17,10 @@ class ProductRepositoryImpl @Inject constructor(
         return flowOf(apiService.getProducts())
     }
 
+    override suspend fun searchProductApiCall(query: String): Flow<ProductResponse> {
+        return flowOf(apiService.searchProduct(query))
+    }
+
     override suspend fun getProductByIdApiCall(id: Int): Flow<Product> {
         return flowOf(apiService.getProductById(id))
     }

@@ -140,7 +140,7 @@ fun TitleProduct(product: Product) {
         )
     ) {
         Text(
-            text = product.title ?: "",
+            text = product.title ?: stringResource(R.string.dash),
             maxLines = 2,
             overflow = TextOverflow.Ellipsis,
             style = MaterialTheme.typography.subtitle1.copy(

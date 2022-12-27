@@ -8,5 +8,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface ProductRepository {
     suspend fun getProductsApiCall(): Flow<ProductResponse>
+    suspend fun searchProductApiCall(query: String): Flow<ProductResponse>
     suspend fun getProductByIdApiCall(id: Int): Flow<Product>
 }
