@@ -4,7 +4,7 @@ package com.rivaldy.id.compose.ui.navigation
 
 sealed class Screen(val route: String) {
     object Home : Screen("home")
-    object Favorite : Screen("favorite")
+    object Cart : Screen("cart")
     object Profile : Screen("profile")
     object DetailProduct : Screen("home/{productId}") {
         fun createRoute(productId: Int) = "home/$productId"

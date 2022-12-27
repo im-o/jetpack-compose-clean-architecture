@@ -3,9 +3,9 @@ package com.rivaldy.id.compose
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -22,8 +22,8 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.rivaldy.id.compose.ui.navigation.NavigationItem
 import com.rivaldy.id.compose.ui.navigation.Screen
+import com.rivaldy.id.compose.ui.screen.cart.CartScreen
 import com.rivaldy.id.compose.ui.screen.detail.DetailScreen
-import com.rivaldy.id.compose.ui.screen.favorite.FavoriteScreen
 import com.rivaldy.id.compose.ui.screen.home.HomeScreen
 import com.rivaldy.id.compose.ui.screen.profile.ProfileScreen
 import com.rivaldy.id.compose.ui.theme.JetShopeeTheme
@@ -58,8 +58,8 @@ fun JetShopee(
                     }
                 )
             }
-            composable(Screen.Favorite.route) {
-                FavoriteScreen()
+            composable(Screen.Cart.route) {
+                CartScreen()
             }
             composable(Screen.Profile.route) {
                 ProfileScreen()
@@ -95,9 +95,9 @@ private fun BottomBar(
                 screen = Screen.Home
             ),
             NavigationItem(
-                title = stringResource(R.string.favorite),
-                icon = Icons.Filled.Favorite,
-                screen = Screen.Favorite
+                title = stringResource(R.string.cart),
+                icon = Icons.Filled.ShoppingCart,
+                screen = Screen.Cart
             ),
             NavigationItem(
                 title = stringResource(R.string.profile),

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">JetShopee</string>
     <string name="home">Home</string>
-    <string name="favorite">Favorite</string>
+    <string name="cart">Cart</string>
     <string name="profile">Profile</string>
     <string name="product_thumbnail">Product Thumbnail</string>
     <string name="no_product">No Product List</string>
