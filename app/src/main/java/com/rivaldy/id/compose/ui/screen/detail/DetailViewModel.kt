@@ -23,7 +23,7 @@ class DetailViewModel @Inject constructor(
     val uiStateProduct: StateFlow<UiState<Product>>
         get() = _uiStateProduct
 
-    fun getProductsApiCall(id: Int) {
+    fun getProductByIdApiCall(id: Int) {
         viewModelScope.launch {
             try {
                 repository.getProductByIdApiCall(id)

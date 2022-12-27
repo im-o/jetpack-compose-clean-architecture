@@ -66,7 +66,7 @@ fun DetailScreen(
                     when (uiState) {
                         is UiState.Loading -> {
                             LoadingProgress()
-                            viewModel.getProductsApiCall(productId)
+                            viewModel.getProductByIdApiCall(productId)
                         }
                         is UiState.Success -> {
                             DetailContent(uiState.data)
