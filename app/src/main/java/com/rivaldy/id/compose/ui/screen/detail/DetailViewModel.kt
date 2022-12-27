@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rivaldy.id.core.data.UiState
 import com.rivaldy.id.core.data.model.Product
+import com.rivaldy.id.core.data.model.mapper.ProductMapper.mapFromProductToEntity
+import com.rivaldy.id.core.data.repository.DbProductRepositoryImpl
 import com.rivaldy.id.core.data.repository.ProductRepositoryImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,12 +18,17 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DetailViewModel @Inject constructor(
-    private val repository: ProductRepositoryImpl
+    private val repository: ProductRepositoryImpl,
+    private val dbRepository: DbProductRepositoryImpl
 ) : ViewModel() {
 
     private val _uiStateProduct: MutableStateFlow<UiState<Product>> = MutableStateFlow(UiState.Loading)
     val uiStateProduct: StateFlow<UiState<Product>>
         get() = _uiStateProduct
+
+    private val _uiStateDbProduct: MutableStateFlow<UiState<Product>> = MutableStateFlow(UiState.Loading)
+    val uiStateDbProduct: StateFlow<UiState<Product>>
+        get() = _uiStateDbProduct
 
     fun getProductByIdApiCall(id: Int) {
         viewModelScope.launch {
@@ -36,6 +43,12 @@ class DetailViewModel @Inject constructor(
             } catch (e: Exception) {
                 _uiStateProduct.value = UiState.Error(e.message.toString())
             }
+        }
+    }
+
+    fun insertProductDb(product: Product) {
+        viewModelScope.launch {
+            dbRepository.insertProductDb(mapFromProductToEntity(product))
         }
     }
 }

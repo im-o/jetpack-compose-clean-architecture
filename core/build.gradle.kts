@@ -71,6 +71,11 @@ dependencies {
         exclude("androidx.lifecycle", "lifecycle-viewmodel-ktx")
     }
 
+    // Room
+    api(MyDependencies.room)
+    kapt(MyDependencies.room_kapt)
+    api(MyDependencies.room_ktx)
+
     // PAGER
     api(MyDependencies.accompanist_pager)
     api(MyDependencies.accompanist_pager_indicator)

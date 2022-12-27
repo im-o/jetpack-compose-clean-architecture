@@ -1,5 +1,6 @@
 package com.rivaldy.id.compose.ui.screen.detail
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -16,8 +17,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Devices
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -26,7 +25,6 @@ import coil.request.ImageRequest
 import com.google.accompanist.pager.*
 import com.rivaldy.id.compose.R
 import com.rivaldy.id.compose.ui.theme.Gray200
-import com.rivaldy.id.compose.ui.theme.JetShopeeTheme
 import com.rivaldy.id.core.data.UiState
 import com.rivaldy.id.core.data.model.Product
 import com.rivaldy.id.core.util.UtilFunctions.fromDollarToRupiah
@@ -69,7 +67,7 @@ fun DetailScreen(
                             viewModel.getProductByIdApiCall(productId)
                         }
                         is UiState.Success -> {
-                            DetailContent(uiState.data)
+                            DetailContent(product = uiState.data, viewModel = viewModel)
                         }
                         is UiState.Error -> {
                             Text(text = stringResource(R.string.error_product))
@@ -81,8 +79,13 @@ fun DetailScreen(
 }
 
 @Composable
-fun DetailContent(product: Product) {
+fun DetailContent(
+    product: Product,
+    viewModel: DetailViewModel
+) {
     var buyText by remember { mutableStateOf(("BUY")) }
+    val context = LocalContext.current
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -110,7 +113,13 @@ fun DetailContent(product: Product) {
                     .background(MaterialTheme.colors.secondary)
                     .fillMaxWidth()
                     .weight(1f)
-                    .padding(vertical = 20.dp),
+                    .padding(vertical = 20.dp)
+                    .clickable {
+                        Toast
+                            .makeText(context, "Added to cart!", Toast.LENGTH_SHORT)
+                            .show()
+                        viewModel.insertProductDb(product)
+                    },
                 textAlign = TextAlign.Center,
                 color = Color.White,
             )
@@ -258,15 +267,5 @@ fun HorizontalTabs(
                 onClick = { }
             )
         }
-    }
-}
-
-@Preview(showBackground = true, device = Devices.PIXEL_4)
-@Composable
-fun DefaultPreview() {
-    JetShopeeTheme {
-        DetailContent(
-            product = Product()
-        )
     }
 }
