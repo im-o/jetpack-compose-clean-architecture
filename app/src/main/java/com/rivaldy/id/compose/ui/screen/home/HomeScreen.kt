@@ -1,5 +1,7 @@
 package com.rivaldy.id.compose.ui.screen.home
 
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -79,6 +81,7 @@ fun LoadingProgress(modifier: Modifier) {
     }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun HomeContent(
     modifier: Modifier,
@@ -99,11 +102,12 @@ fun HomeContent(
             LazyVerticalGrid(
                 columns = GridCells.Adaptive(140.dp),
                 content = {
-                    items(listProduct) { product ->
+                    items(listProduct, key = { it.id ?: -1 }) { product ->
                         ProductItem(
                             product = product,
                             modifier = modifier
                                 .fillMaxWidth()
+                                .animateItemPlacement(tween(durationMillis = 100))
                                 .clickable {
                                     navigateToDetail(product.id ?: return@clickable)
                                 }
@@ -121,7 +125,7 @@ fun EmptyProduct() {
     Text(
         text = stringResource(R.string.no_product),
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxWidth()
             .wrapContentWidth(Alignment.CenterHorizontally)
     )
 }

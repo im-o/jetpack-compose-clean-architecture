@@ -9,5 +9,5 @@ interface DbProductRepository {
     fun getProductsDb(): Flow<MutableList<ProductEntity>>
     fun getProductByIdDb(id: Long): Flow<ProductEntity>
     suspend fun insertProductDb(product: ProductEntity)
-    suspend fun deleteProductDb(product: ProductEntity)
+    suspend fun deleteProductDb(product: ProductEntity): Int
 }

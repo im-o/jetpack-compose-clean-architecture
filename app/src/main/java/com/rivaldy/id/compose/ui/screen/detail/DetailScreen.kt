@@ -79,7 +79,7 @@ fun DetailScreen(
 }
 
 @Composable
-fun DetailContent(
+private fun DetailContent(
     product: Product,
     viewModel: DetailViewModel
 ) {
@@ -141,7 +141,7 @@ fun DetailContent(
 }
 
 @Composable
-fun TitleProduct(product: Product) {
+private fun TitleProduct(product: Product) {
     Column(
         modifier = Modifier.padding(
             horizontal = 16.dp,
@@ -168,7 +168,7 @@ fun TitleProduct(product: Product) {
 }
 
 @Composable
-fun DescriptionProduct(product: Product) {
+private fun DescriptionProduct(product: Product) {
     Column(
         modifier = Modifier.padding(
             horizontal = 16.dp,
@@ -194,7 +194,7 @@ fun DescriptionProduct(product: Product) {
 }
 
 @Composable
-fun LoadingProgress() {
+private fun LoadingProgress() {
     Column {
         CircularProgressIndicator(
             modifier = Modifier
@@ -213,7 +213,7 @@ fun LoadingProgress() {
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun ImageProductPager(product: Product) {
+private fun ImageProductPager(product: Product) {
     val items = product.images
     val pagerState = rememberPagerState()
 
@@ -246,7 +246,7 @@ fun ImageProductPager(product: Product) {
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun HorizontalTabs(
+private fun HorizontalTabs(
     items: List<String?>?,
     pagerState: PagerState,
 ) {

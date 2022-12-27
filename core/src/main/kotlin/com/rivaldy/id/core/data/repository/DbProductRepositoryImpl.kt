@@ -24,7 +24,7 @@ class DbProductRepositoryImpl @Inject constructor(
         db.productDao().insertProduct(product)
     }
 
-    override suspend fun deleteProductDb(product: ProductEntity) {
-        db.productDao().deleteProduct(product)
+    override suspend fun deleteProductDb(product: ProductEntity): Int {
+        return db.productDao().deleteProduct(product)
     }
 }

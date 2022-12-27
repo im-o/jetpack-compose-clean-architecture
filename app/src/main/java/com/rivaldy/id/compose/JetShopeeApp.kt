@@ -59,7 +59,11 @@ fun JetShopee(
                 )
             }
             composable(Screen.Cart.route) {
-                CartScreen()
+                CartScreen(
+                    navigateToDetail = { productId ->
+                        navController.navigate(Screen.DetailProduct.createRoute(productId))
+                    }
+                )
             }
             composable(Screen.Profile.route) {
                 ProfileScreen()
