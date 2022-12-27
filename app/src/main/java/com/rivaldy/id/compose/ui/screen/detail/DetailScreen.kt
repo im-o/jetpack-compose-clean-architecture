@@ -84,6 +84,7 @@ private fun DetailContent(
     viewModel: DetailViewModel
 ) {
     var buyText by remember { mutableStateOf(("BUY")) }
+    var alreadyOnCart by remember { mutableStateOf(false) }
     val context = LocalContext.current
 
     Column(
@@ -107,22 +108,35 @@ private fun DetailContent(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            Text(
-                text = "Add to Cart",
-                modifier = Modifier
-                    .background(MaterialTheme.colors.secondary)
-                    .fillMaxWidth()
-                    .weight(1f)
-                    .padding(vertical = 20.dp)
-                    .clickable {
-                        Toast
-                            .makeText(context, "Added to cart!", Toast.LENGTH_SHORT)
-                            .show()
-                        viewModel.insertProductDb(product)
-                    },
-                textAlign = TextAlign.Center,
-                color = Color.White,
-            )
+            viewModel.uiStateDbProduct.collectAsState(initial = UiState.Loading).value.let { uiState ->
+                when (uiState) {
+                    is UiState.Loading -> {
+                        viewModel.getProductByIdDb(product.id?.toLong() ?: -1)
+                    }
+                    is UiState.Success -> {
+                        alreadyOnCart = true
+                    }
+                    is UiState.Error -> {}
+                }
+            }
+            if (!alreadyOnCart) {
+                Text(
+                    text = "Add to Cart",
+                    modifier = Modifier
+                        .background(MaterialTheme.colors.secondary)
+                        .fillMaxWidth()
+                        .weight(1f)
+                        .padding(vertical = 20.dp)
+                        .clickable {
+                            Toast
+                                .makeText(context, "Added to cart!", Toast.LENGTH_SHORT)
+                                .show()
+                            viewModel.insertProductDb(product)
+                        },
+                    textAlign = TextAlign.Center,
+                    color = Color.White,
+                )
+            }
             Text(
                 text = buyText,
                 modifier = Modifier
@@ -131,7 +145,11 @@ private fun DetailContent(
                     .weight(1f)
                     .padding(vertical = 20.dp)
                     .clickable {
-                        buyText = "Thank You."
+                        val thanks = "Thank you for buying."
+                        Toast
+                            .makeText(context, thanks, Toast.LENGTH_SHORT)
+                            .show()
+                        buyText = thanks
                     },
                 color = Color.White,
                 textAlign = TextAlign.Center,

@@ -3,11 +3,14 @@ package com.rivaldy.id.compose.ui.screen.detail
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rivaldy.id.core.data.UiState
+import com.rivaldy.id.core.data.datasource.local.db.entity.ProductEntity
 import com.rivaldy.id.core.data.model.Product
 import com.rivaldy.id.core.data.model.mapper.ProductMapper.mapFromProductToEntity
 import com.rivaldy.id.core.data.repository.DbProductRepositoryImpl
 import com.rivaldy.id.core.data.repository.ProductRepositoryImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
@@ -26,9 +29,10 @@ class DetailViewModel @Inject constructor(
     val uiStateProduct: StateFlow<UiState<Product>>
         get() = _uiStateProduct
 
-    private val _uiStateDbProduct: MutableStateFlow<UiState<Product>> = MutableStateFlow(UiState.Loading)
-    val uiStateDbProduct: StateFlow<UiState<Product>>
+    private val _uiStateDbProduct: MutableStateFlow<UiState<ProductEntity>> = MutableStateFlow(UiState.Loading)
+    val uiStateDbProduct: StateFlow<UiState<ProductEntity>>
         get() = _uiStateDbProduct
+
 
     fun getProductByIdApiCall(id: Int) {
         viewModelScope.launch {
@@ -46,9 +50,24 @@ class DetailViewModel @Inject constructor(
         }
     }
 
+    fun getProductByIdDb(id: Long) {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                dbRepository.getProductByIdDb(id).catch {
+                    _uiStateDbProduct.value = UiState.Error(it.message.toString())
+                }.collect { product ->
+                    _uiStateDbProduct.value = UiState.Success(product)
+                }
+            } catch (e: Exception) {
+                _uiStateDbProduct.value = UiState.Error(e.message.toString())
+            }
+        }
+    }
+
     fun insertProductDb(product: Product) {
         viewModelScope.launch {
-            dbRepository.insertProductDb(mapFromProductToEntity(product))
+            val longInsertStatus = dbRepository.insertProductDb(mapFromProductToEntity(product))
+            if (longInsertStatus > 0) getProductByIdDb((product.id ?: -1).toLong())
         }
     }
 }

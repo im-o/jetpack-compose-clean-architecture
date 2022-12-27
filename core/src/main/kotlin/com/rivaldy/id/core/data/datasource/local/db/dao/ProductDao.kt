@@ -15,7 +15,7 @@ interface ProductDao {
     fun getProductById(id: Long): ProductEntity
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertProduct(product: ProductEntity)
+    suspend fun insertProduct(product: ProductEntity): Long
 
     @Delete
     suspend fun deleteProduct(product: ProductEntity): Int

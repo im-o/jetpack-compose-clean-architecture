@@ -8,6 +8,6 @@ import kotlinx.coroutines.flow.Flow
 interface DbProductRepository {
     fun getProductsDb(): Flow<MutableList<ProductEntity>>
     fun getProductByIdDb(id: Long): Flow<ProductEntity>
-    suspend fun insertProductDb(product: ProductEntity)
+    suspend fun insertProductDb(product: ProductEntity): Long
     suspend fun deleteProductDb(product: ProductEntity): Int
 }

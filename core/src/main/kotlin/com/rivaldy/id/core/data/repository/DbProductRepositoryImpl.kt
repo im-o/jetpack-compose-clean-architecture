@@ -20,8 +20,8 @@ class DbProductRepositoryImpl @Inject constructor(
         return flowOf(db.productDao().getProductById(id))
     }
 
-    override suspend fun insertProductDb(product: ProductEntity) {
-        db.productDao().insertProduct(product)
+    override suspend fun insertProductDb(product: ProductEntity): Long {
+        return db.productDao().insertProduct(product)
     }
 
     override suspend fun deleteProductDb(product: ProductEntity): Int {

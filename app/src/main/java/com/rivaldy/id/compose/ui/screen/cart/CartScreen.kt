@@ -1,5 +1,6 @@
 package com.rivaldy.id.compose.ui.screen.cart
 
+import android.widget.Toast
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
@@ -13,6 +14,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -92,6 +94,8 @@ fun CartContent(
     navigateToDetail: (Int) -> Unit,
     viewModel: CartViewModel
 ) {
+    val context = LocalContext.current
+
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
         content = {
@@ -106,6 +110,9 @@ fun CartContent(
                     product = product,
                     onRemoveClicked = {
                         viewModel.deleteProductDb(product)
+                        Toast
+                            .makeText(context, "Remove ${product.title} from cart.", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 )
             }
