@@ -1,3 +1,5 @@
+![jetshopee-compose](https://user-images.githubusercontent.com/22957498/210045071-7440c552-bc2c-4c68-9d12-ae668ec187db.gif)
+
 <div class="dcd-tabs my-4">
     <ul class="nav nav-pills mb-3 dcd-tabs__label-container" id="guidance-tab" role="tablist" style="display: list-item">
         <li class="nav-item" style="display: inline-block">
