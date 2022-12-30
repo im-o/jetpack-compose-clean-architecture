@@ -45,7 +45,7 @@ fun HomeScreen(
             when (uiState) {
                 is UiState.Loading -> {
                     viewModel.getProductsApiCall()
-                    LoadingProgress(modifier)
+                    LoadingProgress()
                 }
                 is UiState.Success -> {
                     HomeContent(
@@ -64,16 +64,16 @@ fun HomeScreen(
 }
 
 @Composable
-fun LoadingProgress(modifier: Modifier) {
+fun LoadingProgress() {
     Column {
         CircularProgressIndicator(
-            modifier = modifier
+            modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentWidth(Alignment.CenterHorizontally)
         )
         Spacer(modifier = Modifier.size(32.dp))
         Text(
-            modifier = modifier
+            modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentWidth(Alignment.CenterHorizontally),
             text = stringResource(R.string.load_product)
@@ -83,7 +83,7 @@ fun LoadingProgress(modifier: Modifier) {
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun HomeContent(
+private fun HomeContent(
     modifier: Modifier,
     listProduct: MutableList<Product>?,
     navigateToDetail: (Int) -> Unit,
@@ -122,10 +122,15 @@ fun HomeContent(
 
 @Composable
 fun EmptyProduct() {
-    Text(
-        text = stringResource(R.string.no_product),
-        modifier = Modifier
-            .fillMaxWidth()
-            .wrapContentWidth(Alignment.CenterHorizontally)
-    )
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Text(
+            text = stringResource(R.string.no_product),
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentWidth(Alignment.CenterHorizontally)
+        )
+    }
 }

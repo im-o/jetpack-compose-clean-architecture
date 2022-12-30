@@ -6,7 +6,6 @@ import com.rivaldy.id.core.data.UiState
 import com.rivaldy.id.core.data.datasource.local.db.entity.ProductEntity
 import com.rivaldy.id.core.data.repository.DbProductRepositoryImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -26,7 +25,7 @@ class CartViewModel @Inject constructor(
         get() = _uiStateDbProducts
 
     fun getProductsDb() {
-        CoroutineScope(Dispatchers.IO).launch {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
                 dbRepository.getProductsDb().catch {
                     _uiStateDbProducts.value = UiState.Error(it.message.toString())

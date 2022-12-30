@@ -63,8 +63,8 @@ fun DetailScreen(
                 viewModel.uiStateProduct.collectAsState(initial = UiState.Loading).value.let { uiState ->
                     when (uiState) {
                         is UiState.Loading -> {
-                            LoadingProgress()
                             viewModel.getProductByIdApiCall(productId)
+                            LoadingProgress()
                         }
                         is UiState.Success -> {
                             DetailContent(product = uiState.data, viewModel = viewModel)
@@ -87,6 +87,7 @@ private fun DetailContent(
     val strBuy = stringResource(R.string.buy)
     val strAddedCart = stringResource(R.string.added_to_cart)
     val strThanks = stringResource(R.string.thank_you_buy)
+    val productId = product.id?.toLong() ?: -1
 
     var buyText by remember { mutableStateOf(strBuy) }
     var isAlreadyOnCart by remember { mutableStateOf(false) }
@@ -109,14 +110,11 @@ private fun DetailContent(
         Alignment.BottomStart
     )
     {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly
-        ) {
+        Row(horizontalArrangement = Arrangement.SpaceEvenly) {
             viewModel.uiStateDbProduct.collectAsState(initial = UiState.Loading).value.let { uiState ->
                 when (uiState) {
                     is UiState.Loading -> {
-                        viewModel.getProductByIdDb(product.id?.toLong() ?: -1)
+                        viewModel.getProductByIdDb(productId)
                     }
                     is UiState.Success -> {
                         isAlreadyOnCart = true

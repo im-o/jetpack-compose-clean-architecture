@@ -28,17 +28,17 @@ import com.rivaldy.id.core.util.UtilFunctions.fromDollarToRupiah
 @Composable
 fun ProductCartItem(
     modifier: Modifier = Modifier,
-    product: ProductEntity,
+    product: ProductEntity = ProductEntity(),
     onRemoveClicked: () -> Unit
 ) {
     Card(
         shape = RoundedCornerShape(3.dp),
         backgroundColor = Color.White,
-        modifier = modifier.padding(8.dp)
+        modifier = modifier
+            .padding(8.dp)
+            .fillMaxWidth()
     ) {
-        Row(
-            modifier = modifier.fillMaxWidth()
-        ) {
+        Row {
             SubcomposeAsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
                     .data(product.thumbnail)

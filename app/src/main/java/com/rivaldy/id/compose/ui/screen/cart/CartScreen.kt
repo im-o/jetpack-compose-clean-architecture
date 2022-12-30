@@ -53,8 +53,8 @@ fun CartScreen(
                 viewModel.uiStateDbProducts.collectAsState(initial = UiState.Loading).value.let { uiState ->
                     when (uiState) {
                         is UiState.Loading -> {
-                            LoadingProgress()
                             viewModel.getProductsDb()
+                            LoadingProgress()
                         }
                         is UiState.Success -> {
                             CartContent(products = uiState.data, viewModel = viewModel, navigateToDetail = navigateToDetail)
@@ -111,9 +111,7 @@ fun CartContent(
                     product = product,
                     onRemoveClicked = {
                         viewModel.deleteProductDb(product)
-                        Toast
-                            .makeText(context, strRemoveCart, Toast.LENGTH_SHORT)
-                            .show()
+                        Toast.makeText(context, strRemoveCart, Toast.LENGTH_SHORT).show()
                     }
                 )
             }

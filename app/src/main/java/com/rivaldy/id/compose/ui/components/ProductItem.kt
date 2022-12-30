@@ -26,8 +26,8 @@ import com.rivaldy.id.core.util.UtilFunctions.fromDollarToRupiah
 
 @Composable
 fun ProductItem(
-    product: Product,
-    modifier: Modifier
+    modifier: Modifier = Modifier,
+    product: Product = Product()
 ) {
     Card(
         shape = RoundedCornerShape(8.dp),
