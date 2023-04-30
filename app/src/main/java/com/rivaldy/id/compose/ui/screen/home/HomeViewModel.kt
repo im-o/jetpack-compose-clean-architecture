@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rivaldy.id.core.data.UiState
 import com.rivaldy.id.core.data.model.ProductResponse
-import com.rivaldy.id.core.data.repository.ProductRepositoryImpl
+import com.rivaldy.id.core.data.repository.product.ProductRepositoryImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

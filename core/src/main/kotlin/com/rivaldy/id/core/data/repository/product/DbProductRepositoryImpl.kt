@@ -1,7 +1,8 @@
-package com.rivaldy.id.core.data.repository
+package com.rivaldy.id.core.data.repository.product
 
 import com.rivaldy.id.core.data.datasource.local.db.AppDatabase
 import com.rivaldy.id.core.data.datasource.local.db.entity.ProductEntity
+import com.rivaldy.id.core.domain.repository.product.DbProductRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 import javax.inject.Inject

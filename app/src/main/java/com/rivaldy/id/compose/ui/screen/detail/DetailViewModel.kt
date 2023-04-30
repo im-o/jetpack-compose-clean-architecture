@@ -6,8 +6,8 @@ import com.rivaldy.id.core.data.UiState
 import com.rivaldy.id.core.data.datasource.local.db.entity.ProductEntity
 import com.rivaldy.id.core.data.model.Product
 import com.rivaldy.id.core.data.model.mapper.ProductMapper.mapFromProductToEntity
-import com.rivaldy.id.core.data.repository.DbProductRepositoryImpl
-import com.rivaldy.id.core.data.repository.ProductRepositoryImpl
+import com.rivaldy.id.core.data.repository.product.DbProductRepositoryImpl
+import com.rivaldy.id.core.data.repository.product.ProductRepositoryImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

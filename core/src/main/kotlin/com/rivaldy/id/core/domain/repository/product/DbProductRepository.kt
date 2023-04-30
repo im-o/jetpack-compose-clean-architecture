@@ -1,4 +1,4 @@
-package com.rivaldy.id.core.data.repository
+package com.rivaldy.id.core.domain.repository.product
 
 import com.rivaldy.id.core.data.datasource.local.db.entity.ProductEntity
 import kotlinx.coroutines.flow.Flow
