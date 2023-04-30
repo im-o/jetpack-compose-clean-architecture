@@ -5,6 +5,7 @@ import com.rivaldy.id.core.data.model.Product
 import com.rivaldy.id.core.data.model.ProductResponse
 import com.rivaldy.id.core.domain.repository.product.ProductRepository
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import javax.inject.Inject
 
@@ -14,8 +15,10 @@ class ProductRepositoryImpl @Inject constructor(
     private val apiService: ApiService
 ) : ProductRepository {
 
-    override suspend fun getProductsApiCall(): Flow<ProductResponse> {
-        return flowOf(apiService.getProducts())
+    override fun getProductsApiCall(): Flow<ProductResponse> { // this is sample not using `suspend`
+        return flow {
+            emit(apiService.getProducts())
+        }
     }
 
     override suspend fun searchProductApiCall(query: String): Flow<ProductResponse> {

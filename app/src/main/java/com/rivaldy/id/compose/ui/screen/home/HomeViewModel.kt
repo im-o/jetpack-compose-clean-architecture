@@ -11,6 +11,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -22,26 +24,20 @@ class HomeViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _uiStateProduct: MutableStateFlow<UiState<ProductResponse>> = MutableStateFlow(UiState.Loading)
-    val uiStateProduct: StateFlow<UiState<ProductResponse>>
-        get() = _uiStateProduct
+    val uiStateProduct: StateFlow<UiState<ProductResponse>> = _uiStateProduct
 
     private val _query = mutableStateOf("")
     val query: State<String> get() = _query
 
-    fun getProductsApiCall() {
-        viewModelScope.launch {
-            try {
-                repository.getProductsApiCall()
-                    .catch {
-                        _uiStateProduct.value = UiState.Error(it.message.toString())
-                    }
-                    .collect { product ->
-                        _uiStateProduct.value = UiState.Success(product)
-                    }
-            } catch (e: Exception) {
+    fun getProductsApiCall() { // this is sample not using `suspend`
+        repository.getProductsApiCall()
+            .onEach { product ->
+                _uiStateProduct.value = UiState.Success(product)
+            }
+            .catch { e ->
                 _uiStateProduct.value = UiState.Error(e.message.toString())
             }
-        }
+            .launchIn(viewModelScope)
     }
 
     fun searchProductApiCall(query: String) {

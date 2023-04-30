@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 /** Created by github.com/im-o on 12/16/2022. */
 
 interface ProductRepository {
-    suspend fun getProductsApiCall(): Flow<ProductResponse>
+    fun getProductsApiCall(): Flow<ProductResponse> // this is sample not using `suspend`
     suspend fun searchProductApiCall(query: String): Flow<ProductResponse>
     suspend fun getProductByIdApiCall(id: Int): Flow<Product>
 }
