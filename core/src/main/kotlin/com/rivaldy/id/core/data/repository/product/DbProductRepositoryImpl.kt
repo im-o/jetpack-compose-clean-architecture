@@ -6,9 +6,11 @@ import com.rivaldy.id.core.domain.repository.product.DbProductRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 import javax.inject.Inject
+import javax.inject.Singleton
 
 /** Created by github.com/im-o on 12/27/2022. */
 
+@Singleton
 class DbProductRepositoryImpl @Inject constructor(
     private val db: AppDatabase
 ) : DbProductRepository {

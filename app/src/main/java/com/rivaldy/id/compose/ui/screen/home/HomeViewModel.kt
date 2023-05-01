@@ -6,7 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rivaldy.id.core.data.UiState
 import com.rivaldy.id.core.data.model.ProductResponse
-import com.rivaldy.id.core.data.repository.product.ProductRepositoryImpl
+import com.rivaldy.id.core.domain.usecase.product.GetProductsUseCase
+import com.rivaldy.id.core.domain.usecase.product.SearchProductUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -20,7 +21,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val repository: ProductRepositoryImpl
+    private val getProductsUseCase: GetProductsUseCase,
+    private val searchProductUseCase: SearchProductUseCase
 ) : ViewModel() {
 
     private val _uiStateProduct: MutableStateFlow<UiState<ProductResponse>> = MutableStateFlow(UiState.Loading)
@@ -30,21 +32,18 @@ class HomeViewModel @Inject constructor(
     val query: State<String> get() = _query
 
     fun getProductsApiCall() { // this is sample not using `suspend`
-        repository.getProductsApiCall()
-            .onEach { product ->
-                _uiStateProduct.value = UiState.Success(product)
-            }
-            .catch { e ->
-                _uiStateProduct.value = UiState.Error(e.message.toString())
-            }
-            .launchIn(viewModelScope)
+        getProductsUseCase.execute(Unit).onEach { product ->
+            _uiStateProduct.value = UiState.Success(product)
+        }.catch { e ->
+            _uiStateProduct.value = UiState.Error(e.message.toString())
+        }.launchIn(viewModelScope)
     }
 
     fun searchProductApiCall(query: String) {
         _query.value = query
         viewModelScope.launch {
             try {
-                repository.searchProductApiCall(_query.value)
+                searchProductUseCase.execute(_query.value)
                     .catch {
                         _uiStateProduct.value = UiState.Error(it.message.toString())
                     }

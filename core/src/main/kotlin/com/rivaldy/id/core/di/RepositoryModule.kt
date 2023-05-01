@@ -4,6 +4,8 @@ import com.rivaldy.id.core.data.datasource.local.db.AppDatabase
 import com.rivaldy.id.core.data.datasource.remote.ApiService
 import com.rivaldy.id.core.data.repository.product.DbProductRepositoryImpl
 import com.rivaldy.id.core.data.repository.product.ProductRepositoryImpl
+import com.rivaldy.id.core.domain.repository.product.DbProductRepository
+import com.rivaldy.id.core.domain.repository.product.ProductRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,9 +20,13 @@ object RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideProductRepository(apiService: ApiService) = ProductRepositoryImpl(apiService)
+    fun provideProductRepository(apiService: ApiService): ProductRepository {
+        return ProductRepositoryImpl(apiService)
+    }
 
     @Provides
     @Singleton
-    fun provideDbProductRepository(db: AppDatabase) = DbProductRepositoryImpl(db)
+    fun provideDbProductRepository(db: AppDatabase): DbProductRepository {
+        return DbProductRepositoryImpl(db)
+    }
 }

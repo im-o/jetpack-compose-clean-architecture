@@ -6,8 +6,8 @@ import com.rivaldy.id.core.data.UiState
 import com.rivaldy.id.core.data.datasource.local.db.entity.ProductEntity
 import com.rivaldy.id.core.data.model.Product
 import com.rivaldy.id.core.data.model.mapper.ProductMapper.mapFromProductToEntity
-import com.rivaldy.id.core.data.repository.product.DbProductRepositoryImpl
-import com.rivaldy.id.core.data.repository.product.ProductRepositoryImpl
+import com.rivaldy.id.core.domain.repository.product.DbProductRepository
+import com.rivaldy.id.core.domain.repository.product.ProductRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,8 +21,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DetailViewModel @Inject constructor(
-    private val repository: ProductRepositoryImpl,
-    private val dbRepository: DbProductRepositoryImpl
+    private val repository: ProductRepository,
+    private val dbRepository: DbProductRepository
 ) : ViewModel() {
 
     private val _uiStateProduct: MutableStateFlow<UiState<Product>> = MutableStateFlow(UiState.Loading)

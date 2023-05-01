@@ -8,9 +8,11 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import javax.inject.Inject
+import javax.inject.Singleton
 
 /** Created by github.com/im-o on 12/16/2022. */
 
+@Singleton
 class ProductRepositoryImpl @Inject constructor(
     private val apiService: ApiService
 ) : ProductRepository {
