@@ -20,6 +20,12 @@ object MyDependencies {
 
     const val navigation_compose = "androidx.navigation:navigation-compose:${Versions.navigation_compose}"
 
+    // MOCKITO-KOTLIN
+    const val mockito_kotlin = "org.mockito.kotlin:mockito-kotlin:${Versions.mockito_kotlin_version}"
+
+    // COROUTINES-TEST
+    const val coroutines_test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines_test_version}"
+
     // REMOTE
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit_version}"
     const val retrofit2_converter_gson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit_version}"

@@ -19,6 +19,8 @@ object Versions {
     const val test_ext_junit_version = "1.1.3"
     const val espresso_test_version = "3.4.0"
     const val navigation_compose = "2.5.3"
+    const val mockito_kotlin_version = "4.1.0"
+    const val coroutines_test_version = "1.6.4"
 
     const val retrofit_version = "2.9.0"
     const val okHttp3_version = "4.9.3"

@@ -55,6 +55,12 @@ dependencies {
     debugImplementation(MyDependencies.ui_tooling)
     debugImplementation(MyDependencies.ui_test_manifest)
 
+    // MOCKITO-KOTLIN
+    testImplementation(MyDependencies.mockito_kotlin)
+
+    // COROUTINES TEST
+    testImplementation(MyDependencies.coroutines_test)
+
     // REMOTE
     api(MyDependencies.retrofit)
     api(MyDependencies.retrofit2_converter_gson)
