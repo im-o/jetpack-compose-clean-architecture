@@ -1,6 +1,7 @@
 package com.rivaldy.id.core.di.usecase
 
 import com.rivaldy.id.core.domain.repository.product.ProductRepository
+import com.rivaldy.id.core.domain.usecase.product.GetProductByIdUseCase
 import com.rivaldy.id.core.domain.usecase.product.GetProductsUseCase
 import com.rivaldy.id.core.domain.usecase.product.SearchProductUseCase
 import dagger.Module
@@ -22,5 +23,10 @@ object ProductUseCaseModule {
     @Provides
     fun provideSearchProductUseCase(productRepository: ProductRepository): SearchProductUseCase {
         return SearchProductUseCase(productRepository)
+    }
+
+    @Provides
+    fun provideGetProductByIdUseCase(productRepository: ProductRepository): GetProductByIdUseCase {
+        return GetProductByIdUseCase(productRepository)
     }
 }

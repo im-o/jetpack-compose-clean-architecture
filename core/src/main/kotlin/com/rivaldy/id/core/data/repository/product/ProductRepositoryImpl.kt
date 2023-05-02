@@ -23,11 +23,13 @@ class ProductRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun searchProductApiCall(query: String): Flow<ProductResponse> {
-        return flowOf(apiService.searchProduct(query))
+    override fun getProductByIdApiCall(id: Int): Flow<Product> {
+        return flow {
+            emit(apiService.getProductById(id))
+        }
     }
 
-    override suspend fun getProductByIdApiCall(id: Int): Flow<Product> {
-        return flowOf(apiService.getProductById(id))
+    override suspend fun searchProductApiCall(query: String): Flow<ProductResponse> {
+        return flowOf(apiService.searchProduct(query))
     }
 }

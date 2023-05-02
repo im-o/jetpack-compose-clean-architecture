@@ -7,13 +7,15 @@ import com.rivaldy.id.core.data.datasource.local.db.entity.ProductEntity
 import com.rivaldy.id.core.data.model.Product
 import com.rivaldy.id.core.data.model.mapper.ProductMapper.mapFromProductToEntity
 import com.rivaldy.id.core.domain.repository.product.DbProductRepository
-import com.rivaldy.id.core.domain.repository.product.ProductRepository
+import com.rivaldy.id.core.domain.usecase.product.GetProductByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,33 +23,22 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DetailViewModel @Inject constructor(
-    private val repository: ProductRepository,
+    private val getProductByIdUseCase: GetProductByIdUseCase,
     private val dbRepository: DbProductRepository
 ) : ViewModel() {
 
     private val _uiStateProduct: MutableStateFlow<UiState<Product>> = MutableStateFlow(UiState.Loading)
-    val uiStateProduct: StateFlow<UiState<Product>>
-        get() = _uiStateProduct
+    val uiStateProduct: StateFlow<UiState<Product>> = _uiStateProduct
 
     private val _uiStateDbProduct: MutableStateFlow<UiState<ProductEntity>> = MutableStateFlow(UiState.Loading)
-    val uiStateDbProduct: StateFlow<UiState<ProductEntity>>
-        get() = _uiStateDbProduct
-
+    val uiStateDbProduct: StateFlow<UiState<ProductEntity>> = _uiStateDbProduct
 
     fun getProductByIdApiCall(id: Int) {
-        viewModelScope.launch {
-            try {
-                repository.getProductByIdApiCall(id)
-                    .catch {
-                        _uiStateProduct.value = UiState.Error(it.message.toString())
-                    }
-                    .collect { product ->
-                        _uiStateProduct.value = UiState.Success(product)
-                    }
-            } catch (e: Exception) {
-                _uiStateProduct.value = UiState.Error(e.message.toString())
-            }
-        }
+        getProductByIdUseCase.execute(id).onEach {
+            _uiStateProduct.value = UiState.Success(it)
+        }.catch { e ->
+            _uiStateProduct.value = UiState.Error(e.message.toString())
+        }.launchIn(viewModelScope)
     }
 
     fun getProductByIdDb(id: Long) {
