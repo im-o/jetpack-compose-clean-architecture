@@ -6,8 +6,9 @@ import com.rivaldy.id.core.data.UiState
 import com.rivaldy.id.core.data.datasource.local.db.entity.ProductEntity
 import com.rivaldy.id.core.data.model.Product
 import com.rivaldy.id.core.data.model.mapper.ProductMapper.mapFromProductToEntity
-import com.rivaldy.id.core.domain.repository.product.DbProductRepository
 import com.rivaldy.id.core.domain.usecase.product.GetProductByIdUseCase
+import com.rivaldy.id.core.domain.usecase.product.db.GetProductByIdDbUseCase
+import com.rivaldy.id.core.domain.usecase.product.db.InsertProductDbUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -24,7 +25,8 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailViewModel @Inject constructor(
     private val getProductByIdUseCase: GetProductByIdUseCase,
-    private val dbRepository: DbProductRepository
+    private val getProductByIdDbUseCase: GetProductByIdDbUseCase,
+    private val insertProductDbUseCase: InsertProductDbUseCase,
 ) : ViewModel() {
 
     private val _uiStateProduct: MutableStateFlow<UiState<Product>> = MutableStateFlow(UiState.Loading)
@@ -44,7 +46,7 @@ class DetailViewModel @Inject constructor(
     fun getProductByIdDb(id: Long) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                dbRepository.getProductByIdDb(id).catch {
+                getProductByIdDbUseCase.execute(id).catch {
                     _uiStateDbProduct.value = UiState.Error(it.message.toString())
                 }.collect { product ->
                     _uiStateDbProduct.value = UiState.Success(product)
@@ -57,7 +59,7 @@ class DetailViewModel @Inject constructor(
 
     fun insertProductDb(product: Product) {
         viewModelScope.launch {
-            val longInsertStatus = dbRepository.insertProductDb(mapFromProductToEntity(product))
+            val longInsertStatus = insertProductDbUseCase.execute(mapFromProductToEntity(product))
             if (longInsertStatus > 0) getProductByIdDb((product.id ?: -1).toLong())
         }
     }

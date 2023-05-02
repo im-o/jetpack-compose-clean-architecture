@@ -4,7 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rivaldy.id.core.data.UiState
 import com.rivaldy.id.core.data.datasource.local.db.entity.ProductEntity
-import com.rivaldy.id.core.data.repository.product.DbProductRepositoryImpl
+import com.rivaldy.id.core.domain.usecase.product.db.DeleteProductDbUseCase
+import com.rivaldy.id.core.domain.usecase.product.db.GetProductsDbUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -18,7 +19,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CartViewModel @Inject constructor(
-    private val dbRepository: DbProductRepositoryImpl
+    private val getProductsDbUseCase: GetProductsDbUseCase,
+    private val deleteProductDbUseCase: DeleteProductDbUseCase,
 ) : ViewModel() {
 
     private val _uiStateDbProducts: MutableStateFlow<UiState<MutableList<ProductEntity>>> = MutableStateFlow(UiState.Loading)
@@ -27,7 +29,7 @@ class CartViewModel @Inject constructor(
     fun getProductsDb(dispatcher: CoroutineDispatcher = Dispatchers.Default) {
         viewModelScope.launch(dispatcher) {
             try {
-                dbRepository.getProductsDb().catch {
+                getProductsDbUseCase.execute(Unit).catch {
                     _uiStateDbProducts.value = UiState.Error(it.message.toString())
                 }.collect { product ->
                     _uiStateDbProducts.value = UiState.Success(product)
@@ -40,7 +42,7 @@ class CartViewModel @Inject constructor(
 
     fun deleteProductDb(product: ProductEntity) {
         viewModelScope.launch {
-            val intDelete = dbRepository.deleteProductDb(product)
+            val intDelete = deleteProductDbUseCase.execute(product)
             if (intDelete == 1) getProductsDb()
         }
     }
