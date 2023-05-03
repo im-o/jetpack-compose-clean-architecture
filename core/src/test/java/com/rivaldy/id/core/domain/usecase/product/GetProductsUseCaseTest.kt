@@ -13,21 +13,24 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.mockito.Mock
+import org.mockito.junit.MockitoJUnitRunner
 import org.mockito.kotlin.given
-import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 
 /** Created by github.com/im-o on 5/2/2023.  */
 
 @ExperimentalCoroutinesApi
+@RunWith(MockitoJUnitRunner::class)
 class GetProductsUseCaseTest {
 
+    @Mock
     private lateinit var productRepository: ProductRepository
     private lateinit var getProductsUseCase: GetProductsUseCase
 
     @Before
     fun setUp() {
-        productRepository = mock()
         getProductsUseCase = GetProductsUseCase(productRepository)
     }
 
