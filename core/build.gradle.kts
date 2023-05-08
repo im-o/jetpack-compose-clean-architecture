@@ -86,4 +86,6 @@ dependencies {
     api(MyDependencies.accompanist_pager)
     api(MyDependencies.accompanist_pager_indicator)
 
+    // System UI Controller
+    api(MyDependencies.accompanist_systemuicontroller)
 }
