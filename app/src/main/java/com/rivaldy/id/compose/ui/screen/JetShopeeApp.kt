@@ -1,7 +1,11 @@
-package com.rivaldy.id.compose
+package com.rivaldy.id.compose.ui.screen
 
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.*
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.Icon
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
@@ -20,6 +24,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.rivaldy.id.compose.R
 import com.rivaldy.id.compose.ui.navigation.NavigationItem
 import com.rivaldy.id.compose.ui.navigation.Screen
 import com.rivaldy.id.compose.ui.screen.cart.CartScreen
