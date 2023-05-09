@@ -1,4 +1,4 @@
-package com.rivaldy.id.compose
+package com.rivaldy.id.compose.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
-import com.rivaldy.id.compose.ui.screen.JetShopee
+import com.rivaldy.id.compose.ui.screen.JetMainScreen
 import com.rivaldy.id.compose.ui.theme.JetShopeeTheme
 import com.rivaldy.id.compose.ui.theme.StatusBarColor
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,7 +20,7 @@ class MainActivity : ComponentActivity() {
             JetShopeeTheme {
                 StatusBarColor(color = MaterialTheme.colors.primary)
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-                    JetShopee()
+                    JetMainScreen()
                 }
             }
         }
