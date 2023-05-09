@@ -76,7 +76,8 @@ fun LoadingProgress() {
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentWidth(Alignment.CenterHorizontally),
-            text = stringResource(R.string.load_product)
+            text = stringResource(R.string.load_product),
+            color = MaterialTheme.colors.onSurface
         )
     }
 }
@@ -128,6 +129,7 @@ fun EmptyProduct() {
     ) {
         Text(
             text = stringResource(R.string.no_product),
+            color = MaterialTheme.colors.onSurface,
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentWidth(Alignment.CenterHorizontally)

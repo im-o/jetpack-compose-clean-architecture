@@ -56,11 +56,13 @@ fun CartScreen(
                             viewModel.getProductsDb()
                             LoadingProgress()
                         }
+
                         is UiState.Success -> {
                             CartContent(products = uiState.data, viewModel = viewModel, navigateToDetail = navigateToDetail)
                         }
+
                         is UiState.Error -> {
-                            Text(text = stringResource(R.string.error_product))
+                            Text(text = stringResource(R.string.error_product), color = MaterialTheme.colors.onSurface)
                         }
                     }
                 }
@@ -82,7 +84,8 @@ private fun LoadingProgress() {
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentWidth(Alignment.CenterHorizontally),
-            text = stringResource(R.string.load_product)
+            text = stringResource(R.string.load_product),
+            color = MaterialTheme.colors.onSurface
         )
     }
 }
