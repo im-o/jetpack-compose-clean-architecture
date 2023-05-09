@@ -34,7 +34,6 @@ fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel(),
     navigateToDetail: (Int) -> Unit,
 ) {
-
     Box(
         contentAlignment = Alignment.Center,
         modifier = modifier
@@ -56,7 +55,7 @@ fun HomeScreen(
                     )
                 }
                 is UiState.Error -> {
-                    Text(text = stringResource(R.string.error_product))
+                    Text(text = stringResource(R.string.error_product), color = MaterialTheme.colors.onSurface)
                 }
             }
         }

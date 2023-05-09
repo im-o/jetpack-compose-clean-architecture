@@ -66,11 +66,13 @@ fun DetailScreen(
                             viewModel.getProductByIdApiCall(productId)
                             LoadingProgress()
                         }
+
                         is UiState.Success -> {
                             DetailContent(product = uiState.data, viewModel = viewModel)
                         }
+
                         is UiState.Error -> {
-                            Text(text = stringResource(R.string.error_product))
+                            Text(text = stringResource(R.string.error_product), color = MaterialTheme.colors.onSurface)
                         }
                     }
                 }

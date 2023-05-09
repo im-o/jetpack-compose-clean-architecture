@@ -9,6 +9,7 @@
     <string name="error_product">Can\'t load product, try again.</string>
     <string name="detail_product">Detail Product</string>
     <string name="description">Description</string>
+    <string name="clear">Clear</string>
     <string name="dash">-</string>
     <string name="search_product">Search Product…</string>
     <string name="buy">BUY</string>
