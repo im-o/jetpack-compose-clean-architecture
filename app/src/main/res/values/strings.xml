@@ -15,10 +15,11 @@
     <string name="buy">BUY</string>
     <string name="add_to_cart">Add to Cart</string>
     <string name="added_to_cart">Added to cart!</string>
-    <string name="thank_you_buy">Thank you for buying.</string>
+    <string name="thank_you_buy">Thanks for buying 🎉</string>
     <string name="remove_from_cart_">Remove %s from cart.</string>
     <string name="about_page">about_page</string>
     <string name="rivaldy">Rivaldy</string>
     <string name="job_description">Software Engineer at WorkLifeAndBeyond</string>
     <string name="rival_mail">rivaldy494@gmail.com</string>
+    <string name="back">Back</string>
 </resources>

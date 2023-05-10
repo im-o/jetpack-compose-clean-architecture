@@ -37,11 +37,13 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.rivaldy.id.compose.ui.navigation.BottomBarScreen
+import com.rivaldy.id.compose.ui.navigation.GeneralScreen
 import com.rivaldy.id.compose.ui.navigation.NavigationItem
 import com.rivaldy.id.compose.ui.screen.cart.CartScreen
 import com.rivaldy.id.compose.ui.screen.detail.DetailScreen
 import com.rivaldy.id.compose.ui.screen.home.HomeScreen
 import com.rivaldy.id.compose.ui.screen.profile.ProfileScreen
+import com.rivaldy.id.compose.ui.screen.search.SearchScreen
 import com.rivaldy.id.compose.ui.theme.JetShopeeTheme
 
 /** Created by github.com/im-o on 12/12/2022. */
@@ -66,7 +68,11 @@ fun BottomNav(
         modifier = modifier,
         backgroundColor = MaterialTheme.colors.primary,
         bottomBar = {
-            if (currentRoute != BottomBarScreen.DetailProduct.route) {
+            // show and hide bottom navigation
+            if (currentRoute == BottomBarScreen.Home.route ||
+                currentRoute == BottomBarScreen.Cart.route ||
+                currentRoute == BottomBarScreen.Profile.route
+            ) {
                 BottomBar(navController)
             }
         },
@@ -87,6 +93,9 @@ fun BottomNavGraph(
             HomeScreen(
                 navigateToDetail = { productId ->
                     navController.navigate(BottomBarScreen.DetailProduct.createRoute(productId))
+                },
+                navigateToSearch = {
+                    navController.navigate(GeneralScreen.SearchProduct.createRoute())
                 }
             )
         }
@@ -110,6 +119,18 @@ fun BottomNavGraph(
                 navigateBack = {
                     navController.navigateUp()
                 },
+            )
+        }
+        composable(
+            route = GeneralScreen.SearchProduct.route,
+        ) {
+            SearchScreen(
+                navigateToDetail = { productId ->
+                    navController.navigate(BottomBarScreen.DetailProduct.createRoute(productId))
+                },
+                navigateBack = {
+                    navController.navigateUp()
+                }
             )
         }
     }

@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.rivaldy.id.compose.R
 import com.rivaldy.id.compose.ui.components.ProductCartItem
-import com.rivaldy.id.compose.ui.screen.home.EmptyProduct
+import com.rivaldy.id.compose.ui.screen.home.components.EmptyProduct
 import com.rivaldy.id.compose.ui.theme.Gray200
 import com.rivaldy.id.core.data.UiState
 import com.rivaldy.id.core.data.datasource.local.db.entity.ProductEntity
