@@ -92,17 +92,17 @@ fun BottomNavGraph(
         composable(BottomBarScreen.Home.route) {
             HomeScreen(
                 navigateToDetail = { productId ->
-                    navController.navigate(BottomBarScreen.DetailProduct.createRoute(productId))
+                    navController.navigate(GeneralScreen.DetailProduct.createRoute(productId))
                 },
                 navigateToSearch = {
-                    navController.navigate(GeneralScreen.SearchProduct.createRoute())
+                    navController.navigate(GeneralScreen.SearchProduct.route)
                 }
             )
         }
         composable(BottomBarScreen.Cart.route) {
             CartScreen(
                 navigateToDetail = { productId ->
-                    navController.navigate(BottomBarScreen.DetailProduct.createRoute(productId))
+                    navController.navigate(GeneralScreen.DetailProduct.createRoute(productId))
                 }
             )
         }
@@ -110,7 +110,7 @@ fun BottomNavGraph(
             ProfileScreen()
         }
         composable(
-            route = BottomBarScreen.DetailProduct.route,
+            route = GeneralScreen.DetailProduct.route,
             arguments = listOf(navArgument("productId") { type = NavType.IntType }),
         ) {
             val id = it.arguments?.getInt("productId") ?: -1
@@ -126,7 +126,7 @@ fun BottomNavGraph(
         ) {
             SearchScreen(
                 navigateToDetail = { productId ->
-                    navController.navigate(BottomBarScreen.DetailProduct.createRoute(productId))
+                    navController.navigate(GeneralScreen.DetailProduct.createRoute(productId))
                 },
                 navigateBack = {
                     navController.navigateUp()

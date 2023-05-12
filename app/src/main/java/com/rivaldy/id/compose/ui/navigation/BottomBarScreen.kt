@@ -25,8 +25,4 @@ sealed class BottomBarScreen(val route: String) {
         icon = R.drawable.user,
         iconFocused = R.drawable.user
     )
-
-    object DetailProduct : BottomBarScreen("home/{productId}") {
-        fun createRoute(productId: Int) = "home/$productId"
-    }
 }

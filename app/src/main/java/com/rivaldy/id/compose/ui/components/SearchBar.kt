@@ -1,5 +1,7 @@
 package com.rivaldy.id.compose.ui.components
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -33,9 +35,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.rivaldy.id.compose.R
+import com.rivaldy.id.core.util.Dimens
 
 /** Created by github.com/im-o on 12/27/2022. */
 
@@ -52,7 +53,7 @@ fun SearchBar(
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 16.dp)
+            .padding(start = Dimens.dp16, end = Dimens.dp16, top = Dimens.dp16, bottom = Dimens.dp16)
             .clickable { onSearchClicked() }
     ) {
         TextField(
@@ -63,14 +64,18 @@ fun SearchBar(
                 .focusRequester(FocusRequester())
                 .onFocusChanged { isTextFieldFocused = it.isFocused }
                 .fillMaxWidth()
-                .heightIn(min = 48.dp, max = 48.dp)
-                .clip(RoundedCornerShape(8.dp)),
-            textStyle = TextStyle(fontSize = 14.sp),
+                .heightIn(min = Dimens.dp48, max = Dimens.dp48)
+                .clip(shape = RoundedCornerShape(Dimens.dp8))
+                .border(
+                    border = BorderStroke(Dimens.dp1, MaterialTheme.colors.primary.copy(alpha = 0.4f)),
+                    shape = RoundedCornerShape(Dimens.dp8)
+                ),
+            textStyle = TextStyle(fontSize = Dimens.sp14),
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Default.Search,
                     contentDescription = null,
-                    modifier = Modifier.size(20.dp),
+                    modifier = Modifier.size(Dimens.dp20),
                 )
             },
             trailingIcon = {
@@ -79,7 +84,7 @@ fun SearchBar(
                         Icon(
                             imageVector = Icons.Filled.Clear,
                             contentDescription = stringResource(R.string.clear),
-                            modifier = Modifier.size(20.dp),
+                            modifier = Modifier.size(Dimens.dp20),
                         )
                     }
                 }
@@ -94,7 +99,7 @@ fun SearchBar(
             placeholder = {
                 Text(
                     text = stringResource(R.string.search_product),
-                    fontSize = 14.sp,
+                    fontSize = Dimens.sp14,
                 )
             },
             keyboardOptions = KeyboardOptions(
