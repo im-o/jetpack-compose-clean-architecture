@@ -12,10 +12,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.rivaldy.id.compose.R
-import com.rivaldy.id.compose.ui.components.ProgressProduct
-import com.rivaldy.id.compose.ui.components.SearchBar
-import com.rivaldy.id.compose.ui.screen.home.components.HomeContent
-import com.rivaldy.id.compose.ui.templates.MainTemplate
+import com.rivaldy.id.compose.ui.component.ProgressProduct
+import com.rivaldy.id.compose.ui.component.SearchBar
+import com.rivaldy.id.compose.ui.screen.home.section.HomeContent
+import com.rivaldy.id.compose.ui.template.MainTemplate
 import com.rivaldy.id.compose.ui.theme.Gray200
 import com.rivaldy.id.core.data.UiState
 

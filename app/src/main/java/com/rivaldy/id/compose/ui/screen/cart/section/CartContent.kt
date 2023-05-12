@@ -1,4 +1,4 @@
-package com.rivaldy.id.compose.ui.screen.cart.components
+package com.rivaldy.id.compose.ui.screen.cart.section
 
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -14,8 +14,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.rivaldy.id.compose.R
-import com.rivaldy.id.compose.ui.components.EmptyProduct
-import com.rivaldy.id.compose.ui.components.ProductCartItem
+import com.rivaldy.id.compose.ui.component.EmptyProduct
+import com.rivaldy.id.compose.ui.component.ProductCartItem
 import com.rivaldy.id.compose.ui.screen.cart.CartViewModel
 import com.rivaldy.id.core.data.datasource.local.db.entity.ProductEntity
 import com.rivaldy.id.core.util.Extensions.myToast

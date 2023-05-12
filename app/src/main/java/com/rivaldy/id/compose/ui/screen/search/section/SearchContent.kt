@@ -1,4 +1,4 @@
-package com.rivaldy.id.compose.ui.screen.search.components
+package com.rivaldy.id.compose.ui.screen.search.section
 
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -13,8 +13,8 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.rivaldy.id.compose.ui.components.EmptyProduct
-import com.rivaldy.id.compose.ui.components.ProductItem
+import com.rivaldy.id.compose.ui.component.EmptyProduct
+import com.rivaldy.id.compose.ui.component.ProductItem
 import com.rivaldy.id.core.data.model.Product
 
 /** Created by github.com/im-o on 5/10/2023. */

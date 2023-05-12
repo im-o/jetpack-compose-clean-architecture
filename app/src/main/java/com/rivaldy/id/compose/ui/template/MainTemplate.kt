@@ -1,4 +1,4 @@
-package com.rivaldy.id.compose.ui.templates
+package com.rivaldy.id.compose.ui.template
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize

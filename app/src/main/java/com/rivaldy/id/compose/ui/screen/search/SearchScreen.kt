@@ -24,11 +24,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.rivaldy.id.compose.R
-import com.rivaldy.id.compose.ui.components.ProgressProduct
-import com.rivaldy.id.compose.ui.components.SearchBar
+import com.rivaldy.id.compose.ui.component.ProgressProduct
+import com.rivaldy.id.compose.ui.component.SearchBar
 import com.rivaldy.id.compose.ui.screen.home.HomeViewModel
-import com.rivaldy.id.compose.ui.screen.search.components.SearchContent
-import com.rivaldy.id.compose.ui.templates.MainTemplate
+import com.rivaldy.id.compose.ui.screen.search.section.SearchContent
+import com.rivaldy.id.compose.ui.template.MainTemplate
 import com.rivaldy.id.compose.ui.theme.Gray200
 import com.rivaldy.id.core.data.UiState
 import com.rivaldy.id.core.data.model.ProductResponse

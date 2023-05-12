@@ -1,4 +1,4 @@
-package com.rivaldy.id.compose.ui.screen.detail.components
+package com.rivaldy.id.compose.ui.screen.detail.section
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding

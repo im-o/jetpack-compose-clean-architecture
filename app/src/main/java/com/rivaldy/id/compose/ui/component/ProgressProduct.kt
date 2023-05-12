@@ -1,4 +1,4 @@
-package com.rivaldy.id.compose.ui.components
+package com.rivaldy.id.compose.ui.component
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer

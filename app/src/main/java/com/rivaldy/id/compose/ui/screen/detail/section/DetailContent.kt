@@ -1,4 +1,4 @@
-package com.rivaldy.id.compose.ui.screen.detail.components
+package com.rivaldy.id.compose.ui.screen.detail.section
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -46,7 +46,6 @@ fun DetailContent(
     val strAddedCart = stringResource(R.string.added_to_cart)
     val strThanks = stringResource(R.string.thank_you_buy)
     val productId = product.id?.toLong() ?: -1
-
     var buyText by remember { mutableStateOf(strBuy) }
     var isAlreadyOnCart by remember { mutableStateOf(false) }
 
@@ -60,14 +59,12 @@ fun DetailContent(
         TitleProduct(product = product)
         Divider(color = Gray200, thickness = 10.dp)
         DescriptionProduct(product = product)
-
     }
 
     Box(
         modifier = Modifier.fillMaxSize(),
         Alignment.BottomStart
-    )
-    {
+    ) {
         Row(horizontalArrangement = Arrangement.SpaceEvenly) {
             viewModel.uiStateDbProduct.collectAsState(initial = UiState.Loading).value.let { uiState ->
                 when (uiState) {

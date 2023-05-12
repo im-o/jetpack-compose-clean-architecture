@@ -1,4 +1,4 @@
-package com.rivaldy.id.compose.ui.components
+package com.rivaldy.id.compose.ui.component
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border

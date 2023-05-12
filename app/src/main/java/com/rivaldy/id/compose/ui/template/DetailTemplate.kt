@@ -1,4 +1,4 @@
-package com.rivaldy.id.compose.ui.templates
+package com.rivaldy.id.compose.ui.template
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
