@@ -31,6 +31,7 @@ import com.rivaldy.id.compose.ui.screen.search.components.SearchContent
 import com.rivaldy.id.compose.ui.templates.MainTemplate
 import com.rivaldy.id.compose.ui.theme.Gray200
 import com.rivaldy.id.core.data.UiState
+import com.rivaldy.id.core.data.model.ProductResponse
 
 /** Created by github.com/im-o on 5/10/2023. */
 
@@ -43,6 +44,7 @@ fun SearchScreen(
 ) {
     val query by viewModel.query
     val focusRequester = remember { FocusRequester() }
+    val uiStateProduct by remember { viewModel.uiStateProduct }.collectAsState()
 
     LaunchedEffect(Unit) {
         focusRequester.requestFocus()
@@ -69,7 +71,6 @@ fun SearchScreen(
                     modifier = Modifier
                         .background(MaterialTheme.colors.primary)
                         .focusRequester(focusRequester),
-                    onSearchClicked = {}
                 )
             }
         },
@@ -80,24 +81,22 @@ fun SearchScreen(
                     .fillMaxSize()
                     .background(Gray200)
             ) {
-                viewModel.uiStateProduct.collectAsState(initial = UiState.Loading).value.let { uiState ->
-                    when (uiState) {
-                        is UiState.Loading -> {
-                            viewModel.getProductsApiCall()
-                            LoadingProgress()
-                        }
+                when (uiStateProduct) {
+                    is UiState.Loading -> {
+                        viewModel.getProductsApiCall()
+                        LoadingProgress()
+                    }
 
-                        is UiState.Success -> {
-                            SearchContent(
-                                modifier = modifier,
-                                listProduct = uiState.data.products,
-                                navigateToDetail = navigateToDetail,
-                            )
-                        }
+                    is UiState.Success -> {
+                        SearchContent(
+                            modifier = modifier,
+                            listProduct = (uiStateProduct as UiState.Success<ProductResponse>).data.products,
+                            navigateToDetail = navigateToDetail,
+                        )
+                    }
 
-                        is UiState.Error -> {
-                            Text(text = stringResource(R.string.error_product), color = MaterialTheme.colors.onSurface)
-                        }
+                    is UiState.Error -> {
+                        Text(text = stringResource(R.string.error_product), color = MaterialTheme.colors.onSurface)
                     }
                 }
             }

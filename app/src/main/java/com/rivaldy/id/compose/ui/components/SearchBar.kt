@@ -42,10 +42,10 @@ import com.rivaldy.id.compose.R
 @Composable
 fun SearchBar(
     query: String,
-    onQueryChange: (String) -> Unit,
-    onSearchClicked: () -> Unit,
     modifier: Modifier = Modifier,
     isEnabled: (Boolean) = true,
+    onSearchClicked: () -> Unit = {},
+    onQueryChange: (String) -> Unit = {},
 ) {
     var isTextFieldFocused by remember { mutableStateOf(false) }
 
