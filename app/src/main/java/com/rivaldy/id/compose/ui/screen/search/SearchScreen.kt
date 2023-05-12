@@ -24,9 +24,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.rivaldy.id.compose.R
+import com.rivaldy.id.compose.ui.components.ProgressProduct
 import com.rivaldy.id.compose.ui.components.SearchBar
 import com.rivaldy.id.compose.ui.screen.home.HomeViewModel
-import com.rivaldy.id.compose.ui.screen.home.components.LoadingProgress
 import com.rivaldy.id.compose.ui.screen.search.components.SearchContent
 import com.rivaldy.id.compose.ui.templates.MainTemplate
 import com.rivaldy.id.compose.ui.theme.Gray200
@@ -84,7 +84,7 @@ fun SearchScreen(
                 when (uiStateProduct) {
                     is UiState.Loading -> {
                         viewModel.getProductsApiCall()
-                        LoadingProgress()
+                        ProgressProduct()
                     }
 
                     is UiState.Success -> {

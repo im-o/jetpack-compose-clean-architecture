@@ -13,8 +13,8 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.rivaldy.id.compose.ui.components.EmptyProduct
 import com.rivaldy.id.compose.ui.components.ProductItem
-import com.rivaldy.id.compose.ui.screen.home.components.EmptyProduct
 import com.rivaldy.id.core.data.model.Product
 
 /** Created by github.com/im-o on 5/10/2023. */

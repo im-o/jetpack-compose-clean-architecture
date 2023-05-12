@@ -12,9 +12,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.rivaldy.id.compose.R
+import com.rivaldy.id.compose.ui.components.ProgressProduct
 import com.rivaldy.id.compose.ui.components.SearchBar
 import com.rivaldy.id.compose.ui.screen.home.components.HomeContent
-import com.rivaldy.id.compose.ui.screen.home.components.LoadingProgress
 import com.rivaldy.id.compose.ui.templates.MainTemplate
 import com.rivaldy.id.compose.ui.theme.Gray200
 import com.rivaldy.id.core.data.UiState
@@ -50,7 +50,7 @@ fun HomeScreen(
                     when (uiState) {
                         is UiState.Loading -> {
                             viewModel.getProductsApiCall()
-                            LoadingProgress()
+                            ProgressProduct()
                         }
 
                         is UiState.Success -> {

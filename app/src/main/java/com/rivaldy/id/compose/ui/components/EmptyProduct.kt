@@ -1,4 +1,4 @@
-package com.rivaldy.id.compose.ui.screen.home.components
+package com.rivaldy.id.compose.ui.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize

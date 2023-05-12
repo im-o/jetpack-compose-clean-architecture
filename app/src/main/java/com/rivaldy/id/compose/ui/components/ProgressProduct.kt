@@ -1,4 +1,4 @@
-package com.rivaldy.id.compose.ui.screen.home.components
+package com.rivaldy.id.compose.ui.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -18,7 +18,7 @@ import com.rivaldy.id.compose.R
 /** Created by github.com/im-o on 5/10/2023. */
 
 @Composable
-fun LoadingProgress() {
+fun ProgressProduct() {
     Column {
         CircularProgressIndicator(
             modifier = Modifier
