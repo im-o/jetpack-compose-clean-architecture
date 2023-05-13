@@ -16,3 +16,4 @@
 .cxx
 local.properties
 /.idea/kotlinc.xml
+/.idea/deploymentTargetDropDown.xml
