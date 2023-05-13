@@ -6,10 +6,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -31,6 +33,7 @@ import id.rivaldy.core.R
 import id.rivaldy.core.data.UiState
 import id.rivaldy.core.data.model.Product
 import id.rivaldy.core.ui.theme.Gray200
+import id.rivaldy.core.util.Dimens
 import id.rivaldy.core.util.Extensions.myToast
 import id.rivaldy.core.util.UtilFunctions.logE
 
@@ -56,6 +59,7 @@ fun DetailContent(
             .background(color = Color.White),
     ) {
         ImageProductPager(product = product)
+        Spacer(modifier = Modifier.size(Dimens.dp8))
         TitleProduct(product = product)
         Divider(color = Gray200, thickness = 10.dp)
         DescriptionProduct(product = product)
