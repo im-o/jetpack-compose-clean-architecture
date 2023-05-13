@@ -9,7 +9,7 @@ plugins {
 
 @Suppress("UnstableApiUsage")
 android {
-    namespace = "com.rivaldy.id.core"
+    namespace = "id.rivaldy.core"
     compileSdk = Versions.compile_sdk
 
     defaultConfig {
