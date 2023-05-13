@@ -1,4 +1,4 @@
-package com.rivaldy.id.compose.ui.theme
+package com.rivaldy.id.core.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

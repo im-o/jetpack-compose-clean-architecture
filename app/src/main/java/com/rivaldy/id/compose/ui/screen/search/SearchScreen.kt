@@ -23,15 +23,15 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.rivaldy.id.compose.R
 import com.rivaldy.id.compose.ui.component.ProgressProduct
-import com.rivaldy.id.compose.ui.component.SearchBar
 import com.rivaldy.id.compose.ui.screen.home.HomeViewModel
 import com.rivaldy.id.compose.ui.screen.search.section.SearchContent
-import com.rivaldy.id.compose.ui.template.MainTemplate
-import com.rivaldy.id.compose.ui.theme.Gray200
+import com.rivaldy.id.core.R
 import com.rivaldy.id.core.data.UiState
 import com.rivaldy.id.core.data.model.ProductResponse
+import com.rivaldy.id.core.ui.component.molecules.SearchBar
+import com.rivaldy.id.core.ui.template.MainTemplate
+import com.rivaldy.id.core.ui.theme.Gray200
 
 /** Created by github.com/im-o on 5/10/2023. */
 

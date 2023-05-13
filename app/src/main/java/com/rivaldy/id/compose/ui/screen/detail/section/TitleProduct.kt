@@ -12,7 +12,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.rivaldy.id.compose.R
+import com.rivaldy.id.core.R
 import com.rivaldy.id.core.data.model.Product
 import com.rivaldy.id.core.util.UtilFunctions.fromDollarToRupiah
 

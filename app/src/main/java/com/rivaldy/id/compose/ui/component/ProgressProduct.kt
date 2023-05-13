@@ -13,7 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.rivaldy.id.compose.R
+import com.rivaldy.id.core.R
 
 /** Created by github.com/im-o on 5/10/2023. */
 

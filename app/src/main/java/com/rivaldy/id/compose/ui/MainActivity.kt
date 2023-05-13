@@ -8,8 +8,8 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import com.rivaldy.id.compose.ui.screen.JetMainScreen
-import com.rivaldy.id.compose.ui.theme.JetShopeeTheme
-import com.rivaldy.id.compose.ui.theme.StatusBarColor
+import com.rivaldy.id.core.ui.theme.JetShopeeTheme
+import com.rivaldy.id.core.ui.theme.StatusBarColor
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

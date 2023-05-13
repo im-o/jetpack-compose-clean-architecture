@@ -13,7 +13,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.rivaldy.id.compose.R
+import com.rivaldy.id.core.R
 import com.rivaldy.id.core.data.model.Product
 
 /** Created by github.com/im-o on 5/12/2023. */

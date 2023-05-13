@@ -11,13 +11,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.rivaldy.id.compose.R
 import com.rivaldy.id.compose.ui.component.ProgressProduct
-import com.rivaldy.id.compose.ui.component.SearchBar
 import com.rivaldy.id.compose.ui.screen.home.section.HomeContent
-import com.rivaldy.id.compose.ui.template.MainTemplate
-import com.rivaldy.id.compose.ui.theme.Gray200
+import com.rivaldy.id.core.R
 import com.rivaldy.id.core.data.UiState
+import com.rivaldy.id.core.ui.component.molecules.SearchBar
+import com.rivaldy.id.core.ui.template.MainTemplate
+import com.rivaldy.id.core.ui.theme.Gray200
 
 /** Created by github.com/im-o on 12/12/2022. */
 

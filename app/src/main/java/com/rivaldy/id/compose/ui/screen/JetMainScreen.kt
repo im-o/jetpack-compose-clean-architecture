@@ -44,7 +44,7 @@ import com.rivaldy.id.compose.ui.screen.detail.DetailScreen
 import com.rivaldy.id.compose.ui.screen.home.HomeScreen
 import com.rivaldy.id.compose.ui.screen.profile.ProfileScreen
 import com.rivaldy.id.compose.ui.screen.search.SearchScreen
-import com.rivaldy.id.compose.ui.theme.JetShopeeTheme
+import com.rivaldy.id.core.ui.theme.JetShopeeTheme
 
 /** Created by github.com/im-o on 12/12/2022. */
 

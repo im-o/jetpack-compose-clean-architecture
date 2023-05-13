@@ -30,9 +30,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
-import com.rivaldy.id.compose.R
-import com.rivaldy.id.compose.ui.theme.Shapes
+import com.rivaldy.id.core.R
 import com.rivaldy.id.core.data.datasource.local.db.entity.ProductEntity
+import com.rivaldy.id.core.ui.theme.Shapes
 import com.rivaldy.id.core.util.UtilFunctions.fromDollarToRupiah
 
 @Composable

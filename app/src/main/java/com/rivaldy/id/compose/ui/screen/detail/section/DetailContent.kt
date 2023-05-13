@@ -26,11 +26,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.rivaldy.id.compose.R
 import com.rivaldy.id.compose.ui.screen.detail.DetailViewModel
-import com.rivaldy.id.compose.ui.theme.Gray200
+import com.rivaldy.id.core.R
 import com.rivaldy.id.core.data.UiState
 import com.rivaldy.id.core.data.model.Product
+import com.rivaldy.id.core.ui.theme.Gray200
 import com.rivaldy.id.core.util.Extensions.myToast
 import com.rivaldy.id.core.util.UtilFunctions.logE
 

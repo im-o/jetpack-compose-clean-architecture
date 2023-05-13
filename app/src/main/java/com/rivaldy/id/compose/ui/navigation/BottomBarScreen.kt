@@ -1,6 +1,6 @@
 package com.rivaldy.id.compose.ui.navigation
 
-import com.rivaldy.id.compose.R
+import com.rivaldy.id.core.R
 
 /** Created by github.com/im-o on 5/8/2023. */
 

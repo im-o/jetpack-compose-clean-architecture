@@ -1,4 +1,4 @@
-package com.rivaldy.id.compose.ui.component
+package com.rivaldy.id.core.ui.component.molecules
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
@@ -35,7 +35,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import com.rivaldy.id.compose.R
+import com.rivaldy.id.core.R
 import com.rivaldy.id.core.util.Dimens
 
 /** Created by github.com/im-o on 12/27/2022. */

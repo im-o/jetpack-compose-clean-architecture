@@ -23,9 +23,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
-import com.rivaldy.id.compose.R
-import com.rivaldy.id.compose.ui.theme.Gray200
+import com.rivaldy.id.core.R
 import com.rivaldy.id.core.data.model.Product
+import com.rivaldy.id.core.ui.theme.Gray200
 import com.rivaldy.id.core.util.UtilFunctions.fromDollarToRupiah
 
 @Composable

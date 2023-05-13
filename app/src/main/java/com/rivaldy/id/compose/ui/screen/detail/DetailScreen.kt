@@ -20,11 +20,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.rivaldy.id.compose.R
 import com.rivaldy.id.compose.ui.component.ProgressProduct
 import com.rivaldy.id.compose.ui.screen.detail.section.DetailContent
-import com.rivaldy.id.compose.ui.theme.Gray200
+import com.rivaldy.id.core.R
 import com.rivaldy.id.core.data.UiState
+import com.rivaldy.id.core.ui.theme.Gray200
 
 /** Created by github.com/im-o on 12/22/2022. */
 

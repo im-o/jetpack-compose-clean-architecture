@@ -20,7 +20,7 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.pagerTabIndicatorOffset
 import com.google.accompanist.pager.rememberPagerState
-import com.rivaldy.id.compose.R
+import com.rivaldy.id.core.R
 import com.rivaldy.id.core.data.model.Product
 
 /** Created by github.com/im-o on 5/12/2023. */
