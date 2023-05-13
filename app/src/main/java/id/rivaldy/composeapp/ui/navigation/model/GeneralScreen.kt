@@ -1,4 +1,4 @@
-package id.rivaldy.composeapp.ui.navigation
+package id.rivaldy.composeapp.ui.navigation.model
 
 /** Created by github.com/im-o on 5/10/2023. */
 
