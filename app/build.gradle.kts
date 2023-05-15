@@ -9,11 +9,11 @@ plugins {
 
 @Suppress("UnstableApiUsage")
 android {
-    namespace = "id.rivaldy.composeapp"
+    namespace = "id.barakkastudio.nebenginaja"
     compileSdk = Versions.compile_sdk
 
     defaultConfig {
-        applicationId = "id.rivaldy.composeapp"
+        applicationId = "id.barakkastudio.nebenginaja"
         minSdk = Versions.min_sdk
         targetSdk = Versions.target_sdk
         versionCode = Versions.version_code

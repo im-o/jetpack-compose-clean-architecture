@@ -12,6 +12,6 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "JetShopee"
+rootProject.name = "NebenginAja"
 include ':app'
 include ':core'

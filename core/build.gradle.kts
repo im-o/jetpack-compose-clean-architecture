@@ -9,7 +9,7 @@ plugins {
 
 @Suppress("UnstableApiUsage")
 android {
-    namespace = "id.rivaldy.core"
+    namespace = "id.barakkastudio.core"
     compileSdk = Versions.compile_sdk
 
     defaultConfig {
