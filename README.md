@@ -46,7 +46,8 @@ backend concerns behind. Get ready for some serious fun! 😎
 ## Demo!
 
 Check out this cool GIF of the app in action! 🎬
-![compose-usecase-pattern](https://user-images.githubusercontent.com/22957498/210045071-7440c552-bc2c-4c68-9d12-ae668ec187db.gif)
+
+<img src="https://github.com/im-o/jetpack-compose-clean-architecture/assets/22957498/7e65c36b-e2d0-4085-887a-db3d1a581ad4" alt="Compose Usecase Pattern" height="600"/>
 
 ## Setup Requirements
 
