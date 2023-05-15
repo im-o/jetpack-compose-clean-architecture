@@ -7,8 +7,9 @@ plugins {
     id("kotlin-kapt")
 }
 
+@Suppress("UnstableApiUsage")
 android {
-    namespace = "com.rivaldy.id.core"
+    namespace = "id.rivaldy.core"
     compileSdk = Versions.compile_sdk
 
     defaultConfig {
@@ -32,6 +33,20 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.1.1"
+    }
+    packagingOptions {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
+    tasks.withType().configureEach {
+        kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
+    }
 }
 
 dependencies {
@@ -54,6 +69,12 @@ dependencies {
     androidTestImplementation(MyDependencies.junit_compose)
     debugImplementation(MyDependencies.ui_tooling)
     debugImplementation(MyDependencies.ui_test_manifest)
+
+    // MOCKITO-KOTLIN
+    testImplementation(MyDependencies.mockito_kotlin)
+
+    // COROUTINES TEST
+    testImplementation(MyDependencies.coroutines_test)
 
     // REMOTE
     api(MyDependencies.retrofit)
@@ -80,4 +101,6 @@ dependencies {
     api(MyDependencies.accompanist_pager)
     api(MyDependencies.accompanist_pager_indicator)
 
+    // System UI Controller
+    api(MyDependencies.accompanist_systemuicontroller)
 }

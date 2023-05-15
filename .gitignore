@@ -7,9 +7,13 @@
 /.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
+/.idea/codeStyles
+/.idea/sonarlint
 .DS_Store
 /build
 /captures
 .externalNativeBuild
 .cxx
 local.properties
+/.idea/kotlinc.xml
+/.idea/deploymentTargetDropDown.xml

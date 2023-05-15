@@ -1,258 +1,69 @@
-![jetshopee-compose](https://user-images.githubusercontent.com/22957498/210045071-7440c552-bc2c-4c68-9d12-ae668ec187db.gif)
+## Supercool App with Jetpack Compose and Use Case Design Pattern 🚀
 
-<div class="dcd-tabs my-4">
-    <ul class="nav nav-pills mb-3 dcd-tabs__label-container" id="guidance-tab" role="tablist" style="display: list-item">
-        <li class="nav-item" style="display: inline-block">
-            <a class="nav-link dcd-ghost dcd-btn active show" id="pills-pengantar-tab" data-toggle="pill" href="#pills-pengantar" role="tab" aria-controls="pills-pengantar" aria-selected="true"> Pengantar </a>
-        </li>
-        <li class="nav-item" style="display: inline-block">
-            <a class="nav-link  dcd-ghost dcd-btn show" id="pills-kriteria-tab" data-toggle="pill" href="#pills-kriteria" role="tab" aria-controls="pills-kriteria" aria-selected="false"> Kriteria </a>
-        </li>
-        <li class="nav-item" style="display: inline-block">
-            <a class="nav-link  dcd-ghost dcd-btn show" id="pills-kriteria-opsional-tab" data-toggle="pill" href="#pills-kriteria-opsional" role="tab" aria-controls="pills-kriteria-opsional" aria-selected="false"> Kriteria Opsional </a>
-        </li>
-        <li class="nav-item" style="display: inline-block">
-            <a class="nav-link  dcd-ghost dcd-btn show" id="pills-penilaian-tab" data-toggle="pill" href="#pills-penilaian" role="tab" aria-controls="pills-penilaian" aria-selected="false"> Penilaian </a>
-        </li>
-        <li class="nav-item" style="display: inline-block">
-            <a class="nav-link  dcd-ghost dcd-btn" id="pills-lainnya-tab" data-toggle="pill" href="#pills-lainnya" role="tab" aria-controls="pills-lainnya" aria-selected=""> Lainnya </a>
-        </li>
-    </ul>
-    <div class="tab-content academy-tutorial-content content--prettify-light js-content-prettify fr-view" id="pills-tabContent">
-        <div class="tab-pane fade active show" id="pills-pengantar" role="tabpanel" aria-labelledby="pills-pengantar-tab">
-            <p dir="ltr">Selamat, akhirnya Anda telah sampai di penghujung pembelajaran. Berikut beberapa hal yang sudah Anda lewati.</p>
-            <ul>
-                <li dir="ltr">Berkenalan dengan Jetpack Compose, mengetahui alasan mempelajarinya, dan tools untuk membuatnya.</li>
-                <li dir="ltr">Memahami paradigma dan konsep dasar dari Jetpack Compose, seperti declarative programming, composable function, dan recomposition.</li>
-                <li dir="ltr">Belajar tentang macam-macam layout dan modifier untuk membangun UI di Compose. Serta, belajar juga konsep Slot based layout yang membuat UI aplikasi bersifat reusable.</li>
-                <li dir="ltr">Melihat bagaimana mengatur State pada Jetpack Compose, mengimplementasikan State Hoisting untuk membuat komponen Stateless, memahami berbagai macam Side Effect API, dan mengetahui macam-macam lokasi manajemen state.</li>
-                <li dir="ltr">Membuat aplikasi yang lebih kompleks dengan menampilkan data list yang banyak secara dinamis dan efisien menggunakan Lazy List.&nbsp;</li>
-                <li dir="ltr">Mengimplementasikan navigasi antara halaman pada Jetpack Compose.</li>
-                <li dir="ltr">Memahami cara melakukan testing pada Jetpack Compose.</li>
-                <li dir="ltr">Mengetahui cara menghubungkan Jetpack Compose dengan layout XML dan sebaliknya.</li>
-            </ul>
-            <p dir="ltr">Untuk bisa lulus dan mendapatkan sertifikat dari akademi ini, Anda harus mengerjakan tugas, yakni membuat aplikasi dengan tema bebas menggunakan Compose sesuai kriteria yang tertera. Anda juga bisa meniru UI aplikasi yang sudah ada di PlayStore. Tim Reviewer akan memeriksa pekerjaan Anda dan memberikan reviu pada aplikasi yang Anda buat. <br>
-                <br>
-            </p>
-        </div>
-        <div class="tab-pane fade" id="pills-kriteria" role="tabpanel" aria-labelledby="pills-kriteria-tab">
-            <p dir="ltr">Fitur yang harus ada pada aplikasi:</p>
-            <ol>
-                <li dir="ltr">
-                    <p dir="ltr">
-                        <strong>Halaman List <br>
-                        </strong>
-                    </p>
-                    <ul>
-                        <li dir="ltr">
-                            <p dir="ltr">Menampilkan data dalam format List dengan jumlah minimal 10 item yang berbeda. Gunakanlah LazyList/LazyGrid untuk menyusun datanya.&nbsp;</p>
-                        </li>
-                        <li dir="ltr">
-                            <p dir="ltr">Memunculkan halaman detail ketika salah satu item ditekan.&nbsp;</p>
-                        </li>
-                    </ul>
-                </li>
-                <li dir="ltr">
-                    <p dir="ltr">
-                        <strong>Halaman Detail <br>
-                        </strong>
-                    </p>
-                    <ul>
-                        <li dir="ltr">
-                            <p dir="ltr">Menampilkan gambar dan informasi yang relevan pada halaman detail.&nbsp;</p>
-                        </li>
-                        <li dir="ltr">
-                            <p dir="ltr">Informasi yang relevan mencakup kesamaan informasi yang ditampilkan pada halaman utama dengan halaman detail.</p>
-                            <ul>
-                                <li dir="ltr">
-                                    <p dir="ltr">Terdapat judul dan gambar yang sesuai dengan list</p>
-                                </li>
-                                <li dir="ltr">
-                                    <p dir="ltr">Terdapat informasi tambahan yang tidak sama dengan list</p>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li dir="ltr">
-                    <p dir="ltr">
-                        <strong>Halaman About <br>
-                        </strong>
-                    </p>
-                    <ul>
-                        <li dir="ltr">
-                            <p dir="ltr">Menampilkan foto diri, nama, dan email yang terdaftar di Dicoding.</p>
-                        </li>
-                        <li dir="ltr">
-                            <p dir="ltr">Dalam mengakses halaman about, pastikan terdapat tombol yang bisa digunakan untuk mengakses halamannya. Untuk cara mengaksesnya, Anda bisa mengimplementasikan:</p>
-                            <ul>
-                                <li dir="ltr">
-                                    <p dir="ltr">Dengan menambahkan elemen View khusus (bisa option menu, tombol, atau tab) yang mengandung contentDescription “about_page”</p>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ol>
-        </div>
-        <div class="tab-pane fade" id="pills-kriteria-opsional" role="tabpanel" aria-labelledby="pills-kriteria-opsional-tab">
-            <p dir="ltr">Selain kriteria utama, terdapat kriteria opsional yang yang dapat Anda penuhi agar mendapat nilai yang lebih tinggi.</p>
-            <ol>
-                <li dir="ltr">
-                    <p dir="ltr">
-                        <strong>Fitur Pencarian <br>
-                        </strong>
-                    </p>
-                    <ul>
-                        <li dir="ltr">
-                            <p dir="ltr">Aplikasi memiliki fitur pencarian berdasarkan kata kunci yang dimasukkan, dengan ketentuan:</p>
-                            <ul>
-                                <li dir="ltr">
-                                    <p dir="ltr">Jika kolom pencarian tidak kosong, maka aplikasi hanya menampilkan data yang judulnya mengandung kata kunci yang dimasukkan.</p>
-                                </li>
-                                <li dir="ltr">
-                                    <p dir="ltr">Jika kolom pencariannya kosong, maka aplikasi menampilkan seluruh data.</p>
-                                </li>
-                            </ul>
-                        </li>
-                        <li dir="ltr">
-                            <p dir="ltr">Memanfaatkan ViewModel dalam membangun fitur catatan.</p>
-                        </li>
-                    </ul>
-                </li>
-                <li dir="ltr">
-                    <p dir="ltr">
-                        <strong>Fitur Menambah &amp; Menghapus Data <br>
-                        </strong>
-                    </p>
-                    <ul>
-                        <li dir="ltr">
-                            <p dir="ltr">Aplikasi memiliki fitur untuk menambah dan menghapus data. Berikut beberapa skenario yang bisa diimplementasikan..</p>
-                            <ul>
-                                <li dir="ltr">
-                                    <p dir="ltr">Menambah &amp; menghapus data utama.</p>
-                                </li>
-                                <li dir="ltr">
-                                    <p dir="ltr">Menambah &amp; menghapus data favorit.</p>
-                                </li>
-                                <li dir="ltr">
-                                    <p dir="ltr">Menambah &amp; menghapus data keranjang.</p>
-                                </li>
-                                <li dir="ltr">
-                                    <p dir="ltr">Skenario sejenisnya.</p>
-                                </li>
-                            </ul>
-                        </li>
-                        <li dir="ltr">
-                            <p dir="ltr">Teknik penyimpanan cukup menggunakan fake List. Jika ingin menggunakan database asli atau API pun tidak masalah.</p>
-                        </li>
-                        <li dir="ltr">
-                            <p dir="ltr">Jika data kosong, menampilkan informasi bahwa data kosong.</p>
-                        </li>
-                    </ul>
-                </li>
-            </ol>
-            <p dir="ltr">Berikut kerangka tampilan yang bisa Anda gunakan sebagai referensi:</p>
-            <p dir="ltr">
-                <img src="https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/academy/dos:33f792ba12b938a7c5047aab0f3fc27520221025172956.jpeg" width="602" height="740" class="fr-fic fr-dii" alt="dos:33f792ba12b938a7c5047aab0f3fc27520221025172956.jpeg">
-            </p>
-            <p dir="ltr">&nbsp;</p>
-        </div>
-        <div class="tab-pane fade" id="pills-penilaian" role="tabpanel" aria-labelledby="pills-penilaian-tab">
-            <p dir="ltr">Submission Anda akan dinilai oleh reviewer dengan&nbsp;skala 1-5&nbsp;berdasarkan dari parameter yang ada.</p>
-            <p dir="ltr">Anda dapat menerapkan beberapa&nbsp;saran&nbsp;di bawah ini untuk mendapatkan nilai tinggi, berikut sarannya:</p>
-            <ul>
-                <li>Menerapkan tampilan aplikasi yang sesuai standar. Di mana kriterianya adalah: <ul>
-                        <li dir="ltr">Memiliki width, height, dan padding yang sesuai.</li>
-                        <li dir="ltr">Komponen tidak saling bertumpuk.</li>
-                        <li dir="ltr">Penggunaan komponen sesuai dengan fungsinya.</li>
-                        <li dir="ltr">Penggunaan warna yang sesuai.</li>
-                    </ul>
-                </li>
-                <li>Menuliskan kode dengan baik sesuai best-practice: <ul>
-                        <li>Tidak membuat komponen yang tidak diperlukan.</li>
-                        <li dir="ltr">Memecah UI menjadi komponen sekecil mungkin (sesuai tanggung jawabnya).</li>
-                        <li dir="ltr">Menambahkan default Modifier pada setiap komponen.</li>
-                        <li>Tidak menggunakan object sekaligus sebagai parameter, tetapi cukup yang dibutuhkan saja.</li>
-                        <li dir="ltr">Menggunakan key untuk LazyList/LazyGrid.</li>
-                        <li dir="ltr">Memanajemen state dengan tepat.</li>
-                    </ul>
-                </li>
-                <li>Membuat fitur pencarian.</li>
-                <li dir="ltr">Membuat fitur menambahkan &amp; menghapus data.</li>
-                <li dir="ltr">Membuat end-to-end testing untuk memeriksa fungsional seluruh halaman, baik positif case maupun negative case.</li>
-            </ul>
-            <p dir="ltr">Detail penilaian submission:&nbsp;</p>
-            <div class="dcd-rounded-8 border-gray-200 mb-5 mt-3">
-                <div class="d-flex flex-sm-row flex-column p-3">
-                    <img src="https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/submission-rating-badge/rating-default-1.png" title="rating-default-1" width="96" height="96" id="rating-default-0" alt="rating-default-1" class="modal-dialog-zoom-disabled border-0">
-                    <img src="https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/submission-rating-badge/rating-dark-1.png" title="rating-dark-1" width="96" height="96" id="rating-dark-0" alt="rating-dark-1" class="modal-dialog-zoom-disabled border-0">
-                    <p class="my-auto ml-3">Semua ketentuan terpenuhi, tetapi terdapat indikasi plagiat yaitu dengan menggunakan project orang lain dan hanya merubah kontennya saja.</p>
-                </div>
-                <hr class="m-0 border-gray-200">
-                <div class="d-flex flex-sm-row flex-column p-3">
-                    <img src="https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/submission-rating-badge/rating-default-2.png" title="rating-default-2" width="96" height="96" id="rating-default-1" alt="rating-default-2" class="modal-dialog-zoom-disabled border-0">
-                    <img src="https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/submission-rating-badge/rating-dark-2.png" title="rating-dark-2" width="96" height="96" id="rating-dark-1" alt="rating-dark-2" class="modal-dialog-zoom-disabled border-0">
-                    <p class="my-auto ml-3">Semua ketentuan terpenuhi, tetapi terdapat kekurangan pada tampilan aplikasi.</p>
-                </div>
-                <hr class="m-0 border-gray-200">
-                <div class="d-flex flex-sm-row flex-column p-3">
-                    <img src="https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/submission-rating-badge/rating-default-3.png" title="rating-default-3" width="96" height="96" id="rating-default-2" alt="rating-default-3" class="modal-dialog-zoom-disabled border-0">
-                    <img src="https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/submission-rating-badge/rating-dark-3.png" title="rating-dark-3" width="96" height="96" id="rating-dark-2" alt="rating-dark-3" class="modal-dialog-zoom-disabled border-0">
-                    <p class="my-auto ml-3">Semua ketentuan terpenuhi, tetapi hanya mengikuti apa yang ada pada modul.</p>
-                </div>
-                <hr class="m-0 border-gray-200">
-                <div class="d-flex flex-sm-row flex-column p-3">
-                    <img src="https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/submission-rating-badge/rating-default-4.png" title="rating-default-4" width="96" height="96" id="rating-default-3" alt="rating-default-4" class="modal-dialog-zoom-disabled border-0">
-                    <img src="https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/submission-rating-badge/rating-dark-4.png" title="rating-dark-4" width="96" height="96" id="rating-dark-3" alt="rating-dark-4" class="modal-dialog-zoom-disabled border-0">
-                    <p class="my-auto ml-3">Semua ketentuan terpenuhi dan menerapkan tiga saran di atas.</p>
-                </div>
-                <hr class="m-0 border-gray-200">
-                <div class="d-flex flex-sm-row flex-column p-3">
-                    <img src="https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/submission-rating-badge/rating-default-5.png" title="rating-default-5" width="96" height="96" id="rating-default-4" alt="rating-default-5" class="modal-dialog-zoom-disabled border-0">
-                    <img src="https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/submission-rating-badge/rating-dark-5.png" title="rating-dark-5" width="96" height="96" id="rating-dark-4" alt="rating-dark-5" class="modal-dialog-zoom-disabled border-0">
-                    <p class="my-auto ml-3">Semua ketentuan terpenuhi dan menerapkan semua saran di atas.</p>
-                </div>
-            </div>
-            <blockquote>
-                <p dir="ltr">
-                    <strong>Catatan:</strong>
-                    <br>Jika submission Anda ditolak, tidak ada penilaian. Kriteria penilaian bintang di atas hanya berlaku jika submission Anda lulus.
-                </p>
-            </blockquote>
-            <p dir="ltr">&nbsp;</p>
-        </div>
-        <div class="tab-pane fade " id="pills-lainnya" role="tabpanel" aria-labelledby="pills-lainnya-tab">
-            <h3 dir="ltr">Submission yang Tidak Sesuai Kriteria</h3>
-            <p dir="ltr">Jika submission Anda tidak sesuai dengan kriteria, maka akan ditolak oleh reviewer, berikut poin-poin yang harus diperhatikan:</p>
-            <ul>
-                <li dir="ltr">Aplikasi utama tidak dibuat dengan Jetpack Compose.</li>
-                <li dir="ltr">Tidak bisa berpindah ke&nbsp;halaman detail&nbsp;ketika salah satu item ditekan.</li>
-                <li dir="ltr">Gambar tidak berhasil ditampilkan.</li>
-                <li dir="ltr">Informasi yang ditampilkan pada daftar ataupun detail tidak relevan.</li>
-                <li dir="ltr">Tidak menampilkan&nbsp;foto diri,&nbsp;nama&nbsp;,dan&nbsp;email&nbsp;yang terdaftar di Dicoding pada&nbsp;halaman about.</li>
-                <li dir="ltr">Aplikasi force closed.</li>
-                <li dir="ltr">Melakukan kecurangan seperti tindakan plagiarisme.</li>
-            </ul>
-            <p dir="ltr">&nbsp;</p>
-            <h3 dir="ltr">Forum Diskusi</h3>
-            <p dir="ltr">Jika mengalami kesulitan, Anda bisa menanyakan langsung ke forum diskusi. <a href="https://www.dicoding.com/academies/445/discussions?query=&amp;query_criteria=&amp;sort=&amp;sort_direction=&amp;title=&amp;tutorial=1247&amp;keywords=&amp;creator=">https://www.dicoding.com/academies/445/discussions</a>. </p>
-            <p dir="ltr">&nbsp;</p>
-            <h3 dir="ltr">Ketentuan Berkas Submission</h3>
-            <p dir="ltr">Beberapa poin yang perlu diperhatikan ketika mengirimkan berkas submission:</p>
-            <ul>
-                <li dir="ltr">Menggunakan Android Studio.</li>
-                <li dir="ltr">Menggunakan bahasa pemrograman&nbsp;Kotlin.</li>
-                <li dir="ltr">Dalam aplikasi yang dikirimkan, pastikan untuk dapat dibuka dan terhindar dari crash.</li>
-            </ul>
-            <p dir="ltr">&nbsp;</p>
-            <h3 dir="ltr">Ketentuan Proses Review</h3>
-            <p dir="ltr">Beberapa hal yang perlu Anda ketahui mengenai proses review:</p>
-            <ul>
-                <li dir="ltr">Tim penilai akan mengulas submission Anda dalam waktu selambatnya 3 (tiga) hari kerja (tidak termasuk Sabtu, Minggu, dan hari libur nasional).</li>
-                <li dir="ltr">Tidak disarankan untuk melakukan&nbsp;submit berkali-kali&nbsp;karena akan memperlama proses penilaian.</li>
-                <li dir="ltr">Anda akan mendapat notifikasi hasil pengumpulan submission Anda via email, atau Anda dapat mengecek status submission pada akun Dicoding Anda.</li>
-            </ul>
-        </div>
-    </div>
-</div>
+An Android app built with Jetpack Compose and Kotlin, using the awesome Use Case design pattern 🤘. It consumes DummyJSON - a Fake REST API of JSON to create a unique and exciting marketplace
+experience.
+
+With FakeProductsAPI, you can enjoy different types of REST Endpoints filled with JSON data, allowing you to focus on developing the frontend with your favorite framework and library, and leaving the
+backend concerns behind. Get ready for some serious fun! 😎
+
+## Cool Tech Stack!
+
+- [Kotlin](https://developer.android.com/kotlin) - The futuristic programming language that can run on JVM! It's the officially supported programming language for Android Studio and the community is
+  moving rapidly from Java to Kotlin.
+- [Android KTX](https://developer.android.com/kotlin/ktx.html) - Concise and idiomatic Kotlin library to Jetpack and Android platform APIs. It's like magic!
+- [AndroidX](https://developer.android.com/jetpack/androidx) - The supercharged version of Android Support Library that's way better!
+- [Lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle) - With great power comes great responsibility. It's designed to perform actions based on lifecycle changes of
+  components like activities and fragments.
+- [Viewmodel](https://developer.android.com/topic/libraries/architecture/viewmodel) -The ViewModel class is like a superhero that stores and manages UI-related data in a lifecycle conscious way!
+- [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) - A lifecycle-aware data holder with the observer pattern. It's like a superpower!
+- [Kotlin Coroutines](https://developer.android.com/kotlin/coroutines) - A concurrency design pattern that simplifies async code execution on Android. It's like a secret weapon!
+- [Retrofit](https://square.github.io/retrofit) - The superhero REST Client for Java and Android by Square inc under Apache 2.0 license. It's a simple network library used for network transactions and
+  capturing JSON response from web services.
+- [GSON](https://github.com/square/gson) - The superhero JSON Parser that understands Kotlin non-nullable and default parameters. It's like a genius!
+- [Flow](https://developer.android.com/kotlin/flow) - The superhero type in Coroutines that can emit multiple values sequentially. It's like a superpower for async code execution!
+- [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - A dependency injection library for Android that reduces the boilerplate of manual dependency injection. It's like a
+  magic wand!
+- [Navigation Components](https://developer.android.com/guide/navigation/navigation-getting-started) - The superhero that helps you implement navigation from simple button clicks to more complex
+  patterns. It's like a GPS for your app!
+- [Logging Interceptor](https://github.com/square/okhttp/blob/master/okhttp-logging-interceptor/README.md) - The superhero interceptor that logs HTTP request and response data. It's like a CCTV for
+  network transactions!
+- [GitHub Actions](https://github.com/features/actions) - GitHub Actions are like loyal minions that automate all your software workflows. Build, test, and deploy your code right from GitHub! It's
+  like having your own army of robots!
+- [Mockito Kotlin 👨‍🔬](https://github.com/mockito/mockito-kotlin) - Feeling tired of writing boring and tedious unit tests? Fear not, for Mockito Kotlin is here to save the day! This powerful library
+  allows you to mock objects and functions in a breeze, so you can focus on writing awesome code that blows everyone's minds.
+- [OkHttp3 🌐](https://github.com/square/okhttp) - Looking for a reliable and efficient HTTP client for your app? Look no further than OkHttp3! This battle-tested library is used by some of the largest
+  apps out there, and for good reason: it's fast, reliable, and easy to use.
+- [Coil 🌀](https://github.com/coil-kt/coil) - Tired of dealing with slow and clunky image loading libraries? Say goodbye to your troubles and hello to Coil! This sleek and powerful library makes
+  loading images a breeze, with an intuitive API and impressive performance.
+- [Room 🏠](https://developer.android.com/training/data-storage/room) - Need a database solution that just works? Room has got you covered! This powerful library makes it easy to store and retrieve
+  data from a SQLite database, with an intuitive API and robust feature set. Whether you're building a simple to-do list app or a complex CRM system, Room has everything you need.
+- [Accompanist Pager 📜](https://github.com/google/accompanist/tree/main/pager) - Looking to add some slick page navigation to your app? Accompanist Pager is the library for you! With a range of
+  customizable options and an intuitive API, this library makes it easy to create stunning page layouts that will keep your users engaged and coming back for more.
+- [Material Compose 💄](https://github.com/material-components/material-components-android-compose) - Want to make your app look and feel like a million bucks? Material Compose is the answer! This
+  library provides a range of customizable components and widgets that will make your app look sleek and polished, with an intuitive API that makes it easy to get started. Whether you're building a
+  small app or a massive enterprise system, Material Compose has everything you need to take your UI to the next level.
+
+## Demo!
+
+Check out this cool GIF of the app in action! 🎬
+![compose-usecase-pattern](https://user-images.githubusercontent.com/22957498/210045071-7440c552-bc2c-4c68-9d12-ae668ec187db.gif)
+
+## Setup Requirements
+
+- An Android device or emulator 📱
+- Android Studio 💻
+
+## Getting Started
+
+Ready to try it out yourself? Here's what to do:
+
+1. Clone this project 🐑
+2. Import the project into Android Studio 🚀
+3. Connect your Android device via USB or start your emulator 🌐
+4. Once the project has finished setting up, click the "run" button 🏃‍♂️
+
+## Support
+
+- Did you find this project useful? Show some love by clicking the ⭐️ button in the upper right corner! ❤️
+- Notice anything else missing? File an issue 🚨
+- Want to contribute? Whether it's fixing typos in docs or reviewing code, we welcome all contributions! 🤝
