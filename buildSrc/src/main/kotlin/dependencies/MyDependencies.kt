@@ -48,5 +48,5 @@ object MyDependencies {
     const val accompanist_pager_indicator = "com.google.accompanist:accompanist-pager-indicators:${Versions.accompanist_pager_version}"
 
     // SYSTEMUI-CONTROLLER
-    const val accompanist_systemuicontroller = "com.google.accompanist:accompanist-systemuicontroller:${Versions.accompanist_pager_version}"
+    const val accompanist_systemuicontroller = "com.google.accompanist:accompanist-systemuicontroller:${Versions.accompanist_systemuicontroller_version}"
 }

@@ -7,12 +7,13 @@ plugins {
     id("kotlin-kapt")
 }
 
+@Suppress("UnstableApiUsage")
 android {
-    namespace = "com.rivaldy.id.compose"
+    namespace = "id.rivaldy.composeapp"
     compileSdk = Versions.compile_sdk
 
     defaultConfig {
-        applicationId = "com.rivaldy.id.compose"
+        applicationId = "id.rivaldy.composeapp"
         minSdk = Versions.min_sdk
         targetSdk = Versions.target_sdk
         versionCode = Versions.version_code

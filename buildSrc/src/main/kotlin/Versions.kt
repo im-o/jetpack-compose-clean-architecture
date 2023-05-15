@@ -14,7 +14,6 @@ object Versions {
     const val lifecycle_ktx_version = "2.5.1"
     const val activity_compose_version = "1.6.1"
     const val material_compose_version = "1.3.1"
-    const val app_compat_version = "1.5.1"
     const val junit_version = "4.13.2"
     const val test_ext_junit_version = "1.1.3"
     const val espresso_test_version = "3.4.0"
@@ -28,8 +27,7 @@ object Versions {
     const val hilt_android = "2.38.1"
     const val hilt_navigation = "1.0.0"
     const val room_version = "2.4.3"
-    const val glide_version = "4.14.2"
     const val compose_ui_version = "1.3.1"
     const val accompanist_pager_version = "0.28.0"
-    const val accompanist_systemuicontroller_version = "0.31.1-alpha"
+    const val accompanist_systemuicontroller_version = "0.28.0"
 }

@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">JetShopee</string>
+    <string name="home">Home</string>
+    <string name="cart">Cart</string>
+    <string name="profile">Profile</string>
+    <string name="product_thumbnail">Product Thumbnail</string>
+    <string name="no_product">No Product List</string>
+    <string name="load_product">Load Product…</string>
+    <string name="error_product">Can\'t load product, try again.</string>
+    <string name="detail_product">Detail Product</string>
+    <string name="description">Description</string>
+    <string name="clear">Clear</string>
+    <string name="dash">-</string>
+    <string name="search_product">Search Product…</string>
+    <string name="buy">BUY</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="added_to_cart">Added to cart!</string>
+    <string name="thank_you_buy">Thanks for buying 🎉</string>
+    <string name="remove_from_cart_">Remove %s from cart.</string>
+    <string name="about_page">about_page</string>
+    <string name="rivaldy">Rivaldy</string>
+    <string name="profile_description">Exploring the limitless possibilities of mobile development through the power of Jetpack Compose and the Flutter Framework 🚀</string>
+    <string name="profile_web">https://github.com/im-o</string>
+    <string name="back">Back</string>
+</resources>
