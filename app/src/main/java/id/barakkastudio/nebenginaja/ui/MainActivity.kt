@@ -10,7 +10,6 @@ import androidx.compose.ui.Modifier
 import dagger.hilt.android.AndroidEntryPoint
 import id.barakkastudio.core.ui.theme.JetShopeeTheme
 import id.barakkastudio.core.ui.theme.StatusBarColor
-import id.barakkastudio.nebenginaja.ui.screen.JetMainScreen
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
