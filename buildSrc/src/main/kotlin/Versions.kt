@@ -9,6 +9,7 @@ object Versions {
 
     const val gradle_plugin = "7.3.1"
     const val kotlin_gradle_plugin = "1.6.10"
+    const val compose_compiler = "1.1.1"
 
     const val core_ktx_version = "1.9.0"
     const val lifecycle_ktx_version = "2.5.1"

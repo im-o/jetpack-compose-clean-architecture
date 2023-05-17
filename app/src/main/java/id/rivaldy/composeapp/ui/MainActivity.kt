@@ -10,7 +10,6 @@ import androidx.compose.ui.Modifier
 import dagger.hilt.android.AndroidEntryPoint
 import id.rivaldy.core.ui.theme.JetShopeeTheme
 import id.rivaldy.core.ui.theme.StatusBarColor
-import id.rivaldy.sample.ui.SampleScreen
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -20,7 +19,7 @@ class MainActivity : ComponentActivity() {
             JetShopeeTheme {
                 StatusBarColor(color = MaterialTheme.colors.primary)
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-                    SampleScreen()
+                    JetMainScreen()
                 }
             }
         }
