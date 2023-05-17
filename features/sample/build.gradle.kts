@@ -1,7 +1,7 @@
 import dependencies.MyDependencies
 
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("dagger.hilt.android.plugin")
     id("kotlin-kapt")
@@ -9,20 +9,15 @@ plugins {
 
 @Suppress("UnstableApiUsage")
 android {
-    namespace = "id.barakkastudio.nebenginaja"
+    namespace = "id.rivaldy.sample"
     compileSdk = Versions.compile_sdk
 
     defaultConfig {
-        applicationId = "id.barakkastudio.nebenginaja"
         minSdk = Versions.min_sdk
         targetSdk = Versions.target_sdk
-        versionCode = Versions.version_code
-        versionName = Versions.version_name
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -56,7 +51,6 @@ android {
 
 dependencies {
     implementation(project(Modules.core))
-    implementation(project(Modules.sample))
 
     // TESTING
     testImplementation(MyDependencies.junit)
