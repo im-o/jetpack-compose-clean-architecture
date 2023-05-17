@@ -1,28 +1,20 @@
 import dependencies.MyDependencies
 
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("dagger.hilt.android.plugin")
-    id("kotlin-kapt")
 }
 
 @Suppress("UnstableApiUsage")
 android {
-    namespace = "id.rivaldy.composeapp"
-    compileSdk = Versions.compile_sdk
+    namespace = "id.rivaldy.sample"
+    compileSdk = 33
 
     defaultConfig {
-        applicationId = "id.rivaldy.composeapp"
-        minSdk = Versions.min_sdk
-        targetSdk = Versions.target_sdk
-        versionCode = Versions.version_code
-        versionName = Versions.version_name
+        minSdk = 21
+        targetSdk = 33
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
     }
 
     buildTypes {
@@ -36,7 +28,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
+        jvmTarget = "1.8"
     }
     buildFeatures {
         compose = true
@@ -56,7 +48,6 @@ android {
 
 dependencies {
     implementation(project(Modules.core))
-    implementation(project(Modules.sample))
 
     // TESTING
     testImplementation(MyDependencies.junit)
@@ -65,8 +56,4 @@ dependencies {
     androidTestImplementation(MyDependencies.junit_compose)
     debugImplementation(MyDependencies.ui_tooling)
     debugImplementation(MyDependencies.ui_test_manifest)
-
-    // Hilt
-    implementation(MyDependencies.hilt_android)
-    kapt(MyDependencies.hilt_android_compiler)
 }

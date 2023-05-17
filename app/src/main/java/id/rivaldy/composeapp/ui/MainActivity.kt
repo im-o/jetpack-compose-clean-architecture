@@ -8,9 +8,9 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import dagger.hilt.android.AndroidEntryPoint
-import id.rivaldy.composeapp.ui.screen.JetMainScreen
 import id.rivaldy.core.ui.theme.JetShopeeTheme
 import id.rivaldy.core.ui.theme.StatusBarColor
+import id.rivaldy.sample.ui.SampleScreen
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -20,7 +20,7 @@ class MainActivity : ComponentActivity() {
             JetShopeeTheme {
                 StatusBarColor(color = MaterialTheme.colors.primary)
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-                    JetMainScreen()
+                    SampleScreen()
                 }
             }
         }

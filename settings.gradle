@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 rootProject.name = "JetShopee"
 include ':app'
 include ':core'
+include ':features:sample'
