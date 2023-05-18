@@ -8,6 +8,7 @@ object Versions {
     const val version_name = "1.0"
 
     const val gradle_plugin = "7.3.1"
+    const val google_services = "4.3.15"
     const val kotlin_gradle_plugin = "1.6.10"
     const val compose_compiler = "1.1.1"
 
@@ -31,4 +32,6 @@ object Versions {
     const val compose_ui_version = "1.3.1"
     const val accompanist_pager_version = "0.28.0"
     const val accompanist_systemuicontroller_version = "0.28.0"
+
+    const val realtime_database_version = "20.2.1"
 }

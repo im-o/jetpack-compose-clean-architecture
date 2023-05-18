@@ -5,6 +5,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("dagger.hilt.android.plugin")
     id("kotlin-kapt")
+    id("com.google.gms.google-services")
 }
 
 @Suppress("UnstableApiUsage")
@@ -61,6 +62,9 @@ dependencies {
     api(MyDependencies.ui_compose)
     api(MyDependencies.ui_tooling_preview)
     api(MyDependencies.navigation_compose)
+
+    // FIREBASE
+    api(MyDependencies.realtime_database)
 
     // TESTING
     testImplementation(MyDependencies.junit)

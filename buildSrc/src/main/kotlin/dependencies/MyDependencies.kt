@@ -3,6 +3,7 @@ package dependencies
 /** Created by github.com/im-o on 12/13/2022. */
 
 object MyDependencies {
+
     // DEFAULT DEPENDENCIES
     const val core_ktx = "androidx.core:core-ktx:${Versions.core_ktx_version}"
     const val lifecycle_ktx = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle_ktx_version}"
@@ -49,4 +50,7 @@ object MyDependencies {
 
     // SYSTEMUI-CONTROLLER
     const val accompanist_systemuicontroller = "com.google.accompanist:accompanist-systemuicontroller:${Versions.accompanist_systemuicontroller_version}"
+
+    // FIREBASE
+    const val realtime_database = "com.google.firebase:firebase-database-ktx:${Versions.realtime_database_version}"
 }

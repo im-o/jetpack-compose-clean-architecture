@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "607026654260",
+    "project_id": "nebengin-aja-id-01",
+    "storage_bucket": "nebengin-aja-id-01.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:607026654260:android:51de97fab722422a946e61",
+        "android_client_info": {
+          "package_name": "id.barakkastudio.nebenginaja"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "607026654260-s7ahdi6a05bhvvjhfit3eavrbbclot36.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwqgKIUtLH0XC2aMeU-NHJFjdZjRIbDWQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "607026654260-s7ahdi6a05bhvvjhfit3eavrbbclot36.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
