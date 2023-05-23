@@ -4,21 +4,21 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import id.barakkastudio.core.R
 import id.barakkastudio.core.data.UiState
@@ -42,12 +42,17 @@ fun DetailScreen(
                 },
                 navigationIcon = {
                     IconButton(onClick = { navigateBack() }) {
-                        Icon(Icons.Filled.ArrowBack, "Back Icon")
+                        Icon(
+                            imageVector = Icons.Filled.ArrowBack,
+                            contentDescription = "Back Icon",
+                            tint = Color.White,
+                        )
                     }
                 },
-                backgroundColor = MaterialTheme.colors.primary,
-                contentColor = Color.White,
-                elevation = 0.dp
+                colors = TopAppBarDefaults.smallTopAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    titleContentColor = Color.White,
+                )
             )
         }, content = {
             Box(
@@ -69,7 +74,7 @@ fun DetailScreen(
                         }
 
                         is UiState.Error -> {
-                            Text(text = stringResource(R.string.error_product), color = MaterialTheme.colors.onSurface)
+                            Text(text = stringResource(R.string.error_product), color = MaterialTheme.colorScheme.onSurface)
                         }
                     }
                 }

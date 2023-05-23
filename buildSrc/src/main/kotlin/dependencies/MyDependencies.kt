@@ -37,7 +37,8 @@ object MyDependencies {
     // HILT
     const val hilt_android = "com.google.dagger:hilt-android:${Versions.hilt_android}"
     const val hilt_android_compiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt_android}"
-    const val hilt_navigation_compose = "androidx.hilt:hilt-navigation-compose:${Versions.hilt_navigation}"
+    const val hilt_compose = "androidx.hilt:hilt-navigation-compose:${Versions.hilt_compose}"
+    const val hilt_compose_compiler = "androidx.hilt:hilt-compiler:${Versions.hilt_compose}"
 
     // ROOM
     const val room = "androidx.room:room-runtime:${Versions.room_version}"

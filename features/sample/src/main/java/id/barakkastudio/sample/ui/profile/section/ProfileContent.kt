@@ -7,9 +7,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -30,7 +31,9 @@ fun ProfileContent() {
     Card(
         modifier = Modifier.size(160.dp),
         shape = CircleShape,
-        elevation = 3.dp
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 3.dp
+        )
     ) {
         Image(
             painterResource(R.drawable.rival_profile),
@@ -46,7 +49,7 @@ fun ProfileContent() {
     ) {
         Text(
             text = stringResource(R.string.rivaldy),
-            style = MaterialTheme.typography.subtitle1.copy(
+            style = MaterialTheme.typography.bodyMedium.copy(
                 fontWeight = FontWeight.Normal, fontSize = 28.sp, textAlign = TextAlign.Center
             ),
             color = Color.Black
@@ -54,7 +57,7 @@ fun ProfileContent() {
         Spacer(modifier = Modifier.size(3.dp))
         Text(
             text = stringResource(R.string.profile_web),
-            style = MaterialTheme.typography.subtitle2.copy(
+            style = MaterialTheme.typography.bodySmall.copy(
                 fontWeight = FontWeight.Light, fontSize = 18.sp, textAlign = TextAlign.Center
             ),
             color = Color.DarkGray
@@ -62,10 +65,10 @@ fun ProfileContent() {
         Spacer(modifier = Modifier.size(16.dp))
         Text(
             text = stringResource(R.string.profile_description),
-            style = MaterialTheme.typography.subtitle2.copy(
+            style = MaterialTheme.typography.bodySmall.copy(
                 fontWeight = FontWeight.Light, fontSize = 16.sp, textAlign = TextAlign.Center
             ),
-            color = MaterialTheme.colors.secondary
+            color = MaterialTheme.colorScheme.secondary
         )
     }
 }

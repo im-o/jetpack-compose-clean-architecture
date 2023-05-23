@@ -5,12 +5,12 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -54,6 +54,7 @@ fun SearchScreen(
         modifier = modifier,
         topBar = {
             Row(
+                modifier = modifier.background(MaterialTheme.colorScheme.primary),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 IconButton(
@@ -69,7 +70,7 @@ fun SearchScreen(
                     query = query,
                     onQueryChange = viewModel::searchProductApiCall,
                     modifier = Modifier
-                        .background(MaterialTheme.colors.primary)
+                        .background(MaterialTheme.colorScheme.primary)
                         .focusRequester(focusRequester),
                 )
             }
@@ -96,7 +97,7 @@ fun SearchScreen(
                     }
 
                     is UiState.Error -> {
-                        Text(text = stringResource(R.string.error_product), color = MaterialTheme.colors.onSurface)
+                        Text(text = stringResource(R.string.error_product), color = MaterialTheme.colorScheme.onSurface)
                     }
                 }
             }

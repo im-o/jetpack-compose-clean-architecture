@@ -11,15 +11,15 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
-import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -67,7 +67,7 @@ fun SearchBar(
                 .heightIn(min = Dimens.dp48, max = Dimens.dp48)
                 .clip(shape = RoundedCornerShape(Dimens.dp8))
                 .border(
-                    border = BorderStroke(Dimens.dp1, MaterialTheme.colors.primary.copy(alpha = 0.4f)),
+                    border = BorderStroke(Dimens.dp1, MaterialTheme.colorScheme.primary.copy(alpha = 0.4f)),
                     shape = RoundedCornerShape(Dimens.dp8)
                 ),
             textStyle = TextStyle(fontSize = Dimens.sp14),
@@ -90,11 +90,11 @@ fun SearchBar(
                 }
             },
             colors = TextFieldDefaults.textFieldColors(
-                backgroundColor = MaterialTheme.colors.surface,
+                containerColor = MaterialTheme.colorScheme.surface,
                 disabledIndicatorColor = Color.Transparent,
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
-                textColor = MaterialTheme.colors.onSurface,
+                textColor = MaterialTheme.colorScheme.onSurface,
             ),
             placeholder = {
                 Text(

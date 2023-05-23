@@ -2,8 +2,8 @@ package id.barakkastudio.sample.ui.detail.section
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -30,17 +30,17 @@ fun TitleProduct(product: Product) {
             text = product.title ?: stringResource(R.string.dash),
             maxLines = 2,
             overflow = TextOverflow.Ellipsis,
-            style = MaterialTheme.typography.subtitle1.copy(
+            style = MaterialTheme.typography.bodyMedium.copy(
                 fontWeight = FontWeight.Normal, fontSize = 28.sp
             ),
             color = Color.Black
         )
         Text(
             text = product.price.fromDollarToRupiah(),
-            style = MaterialTheme.typography.subtitle2.copy(
+            style = MaterialTheme.typography.bodySmall.copy(
                 fontWeight = FontWeight.Light, fontSize = 20.sp
             ),
-            color = MaterialTheme.colors.secondary
+            color = MaterialTheme.colorScheme.secondary
         )
     }
 }

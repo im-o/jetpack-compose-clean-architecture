@@ -46,7 +46,12 @@ android {
         }
     }
     tasks.withType().configureEach {
-        kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
+        kotlinOptions {
+            freeCompilerArgs = freeCompilerArgs + listOf(
+                "-opt-in=kotlin.RequiresOptIn",
+                "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
+            )
+        }
     }
 }
 
@@ -57,10 +62,16 @@ dependencies {
     api(MyDependencies.lifecycle_ktx)
 
     // COMPOSE
-    api(MyDependencies.material_compose)
     api(MyDependencies.activity_compose)
-    api(MyDependencies.ui_compose)
-    api(MyDependencies.ui_tooling_preview)
+    api(platform("androidx.compose:compose-bom:2022.10.00"))
+    api("androidx.compose.ui:ui")
+    api("androidx.compose.ui:ui-graphics")
+    api("androidx.compose.ui:ui-tooling-preview")
+    api("androidx.compose.material3:material3")
+
+//    api(MyDependencies.material_compose)
+//    api(MyDependencies.ui_compose)
+//    api(MyDependencies.ui_tooling_preview)
     api(MyDependencies.navigation_compose)
 
     // FIREBASE
@@ -70,9 +81,10 @@ dependencies {
     testImplementation(MyDependencies.junit)
     androidTestImplementation(MyDependencies.test_ext_junit)
     androidTestImplementation(MyDependencies.espresso_core)
-    androidTestImplementation(MyDependencies.junit_compose)
-    debugImplementation(MyDependencies.ui_tooling)
-    debugImplementation(MyDependencies.ui_test_manifest)
+    androidTestImplementation(platform("androidx.compose:compose-bom:2022.10.00"))
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+    debugImplementation("androidx.compose.ui:ui-tooling")
+    debugImplementation("androidx.compose.ui:ui-test-manifest")
 
     // MOCKITO-KOTLIN
     testImplementation(MyDependencies.mockito_kotlin)
@@ -92,9 +104,10 @@ dependencies {
     // Hilt
     implementation(MyDependencies.hilt_android)
     kapt(MyDependencies.hilt_android_compiler)
-    api(MyDependencies.hilt_navigation_compose) {
+    api(MyDependencies.hilt_compose) {
         exclude("androidx.lifecycle", "lifecycle-viewmodel-ktx")
     }
+    kapt(MyDependencies.hilt_compose_compiler)
 
     // Room
     api(MyDependencies.room)

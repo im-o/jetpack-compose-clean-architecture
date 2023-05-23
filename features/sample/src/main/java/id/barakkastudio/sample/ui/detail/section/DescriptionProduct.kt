@@ -4,8 +4,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -28,7 +28,7 @@ internal fun DescriptionProduct(product: Product) {
     ) {
         Text(
             text = stringResource(R.string.description),
-            style = MaterialTheme.typography.subtitle1.copy(
+            style = MaterialTheme.typography.bodyMedium.copy(
                 fontWeight = FontWeight.Normal, fontSize = 18.sp
             ),
             color = Color.Black
@@ -36,7 +36,7 @@ internal fun DescriptionProduct(product: Product) {
         Spacer(modifier = Modifier.size(8.dp))
         Text(
             text = product.description ?: stringResource(R.string.dash),
-            style = MaterialTheme.typography.subtitle2.copy(
+            style = MaterialTheme.typography.bodySmall.copy(
                 fontWeight = FontWeight.Light, fontSize = 16.sp
             ),
             color = Color.DarkGray
