@@ -12,7 +12,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "NebenginAja"
+rootProject.name = "Jetpack Compose clean architecture"
 include ':app'
 include ':core'
 include ':features:sample'
