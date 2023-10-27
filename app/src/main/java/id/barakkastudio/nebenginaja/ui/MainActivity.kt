@@ -9,7 +9,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import dagger.hilt.android.AndroidEntryPoint
 import id.barakkastudio.core.ui.theme.JetShopeeTheme
-import id.barakkastudio.core.ui.theme.StatusBarColor
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -17,7 +16,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             JetShopeeTheme {
-                StatusBarColor(color = MaterialTheme.colorScheme.primary)
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
                     JetMainScreen()
                 }
