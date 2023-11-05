@@ -8,14 +8,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavDestination
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import id.barakkastudio.sample.ui.navigation.model.BottomBar
 import id.barakkastudio.sample.ui.navigation.model.BottomBarScreen
 
 /** Created by github.com/im-o on 5/13/2023. */
@@ -23,21 +23,25 @@ import id.barakkastudio.sample.ui.navigation.model.BottomBarScreen
 @Composable
 fun BottomNav(
     modifier: Modifier = Modifier,
+    navigationItemContentList: List<BottomBar>,
     navController: NavHostController = rememberNavController(),
+    currentDestination: NavDestination?
 ) {
-    val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentRoute = navBackStackEntry?.destination?.route
-
     Scaffold(
         modifier = modifier,
         containerColor = MaterialTheme.colorScheme.primary,
         bottomBar = {
             // show and hide bottom navigation
-            if (currentRoute == BottomBarScreen.Home.route ||
-                currentRoute == BottomBarScreen.Cart.route ||
-                currentRoute == BottomBarScreen.Profile.route
+            if (currentDestination?.route == BottomBarScreen.Home.route ||
+                currentDestination?.route == BottomBarScreen.Cart.route ||
+                currentDestination?.route == BottomBarScreen.Profile.route
             ) {
-                BottomBar(navController)
+                BottomBar(
+                    modifier = modifier,
+                    navController = navController,
+                    navigationItemContentList = navigationItemContentList,
+                    currentDestination = currentDestination
+                )
             }
         },
     ) {
@@ -47,18 +51,11 @@ fun BottomNav(
 
 @Composable
 fun BottomBar(
-    navController: NavHostController,
     modifier: Modifier = Modifier,
+    navController: NavHostController,
+    navigationItemContentList: List<BottomBar>,
+    currentDestination: NavDestination?
 ) {
-    val screens = listOf(
-        BottomBarScreen.Home,
-        BottomBarScreen.Cart,
-        BottomBarScreen.Profile
-    )
-
-    val navStackBackEntry by navController.currentBackStackEntryAsState()
-    val currentDestination = navStackBackEntry?.destination
-
     Row(
         modifier = modifier
             .padding(start = 0.dp, end = 0.dp, top = 10.dp, bottom = 10.dp)
@@ -67,7 +64,7 @@ fun BottomBar(
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        screens.forEach { screen ->
+        navigationItemContentList.forEach { screen ->
             BottomNavItem(
                 screen = screen,
                 currentDestination = currentDestination,
