@@ -53,7 +53,7 @@ fun SearchBar(
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .padding(start = Dimens.dp16, end = Dimens.dp16, top = Dimens.dp16, bottom = Dimens.dp16)
+            .padding(start = Dimens.dp16, end = Dimens.dp16, top = Dimens.dp8, bottom = Dimens.dp8)
             .clickable { onSearchClicked() }
     ) {
         TextField(
@@ -94,7 +94,7 @@ fun SearchBar(
                 disabledIndicatorColor = Color.Transparent,
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
-                textColor = MaterialTheme.colorScheme.onSurface,
+                focusedTextColor = MaterialTheme.colorScheme.onSurface,
             ),
             placeholder = {
                 Text(
