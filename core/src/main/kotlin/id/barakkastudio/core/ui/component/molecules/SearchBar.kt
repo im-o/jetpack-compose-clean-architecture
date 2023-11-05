@@ -89,12 +89,12 @@ fun SearchBar(
                     }
                 }
             },
-            colors = TextFieldDefaults.textFieldColors(
-                containerColor = MaterialTheme.colorScheme.surface,
-                disabledIndicatorColor = Color.Transparent,
+            colors = TextFieldDefaults.colors(
+                focusedContainerColor = MaterialTheme.colorScheme.surface,
                 focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent,
                 focusedTextColor = MaterialTheme.colorScheme.onSurface,
+                disabledIndicatorColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent,
             ),
             placeholder = {
                 Text(
