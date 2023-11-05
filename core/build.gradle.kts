@@ -50,6 +50,7 @@ android {
             freeCompilerArgs = freeCompilerArgs + listOf(
                 "-opt-in=kotlin.RequiresOptIn",
                 "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
+                "-opt-in=androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi",
             )
         }
     }
@@ -63,15 +64,12 @@ dependencies {
 
     // COMPOSE
     api(MyDependencies.activity_compose)
-    api(platform("androidx.compose:compose-bom:2022.10.00"))
+    api(platform("androidx.compose:compose-bom:2023.06.00"))
     api("androidx.compose.ui:ui")
     api("androidx.compose.ui:ui-graphics")
     api("androidx.compose.ui:ui-tooling-preview")
     api("androidx.compose.material3:material3")
-
-//    api(MyDependencies.material_compose)
-//    api(MyDependencies.ui_compose)
-//    api(MyDependencies.ui_tooling_preview)
+    api("androidx.compose.material3:material3-window-size-class")
     api(MyDependencies.navigation_compose)
 
     // FIREBASE
@@ -81,7 +79,7 @@ dependencies {
     testImplementation(MyDependencies.junit)
     androidTestImplementation(MyDependencies.test_ext_junit)
     androidTestImplementation(MyDependencies.espresso_core)
-    androidTestImplementation(platform("androidx.compose:compose-bom:2022.10.00"))
+    androidTestImplementation(platform("androidx.compose:compose-bom:2023.06.00"))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")

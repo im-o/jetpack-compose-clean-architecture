@@ -12,6 +12,7 @@ object MyDependencies {
     const val ui_tooling_preview = "androidx.compose.ui:ui-tooling-preview:${Versions.compose_ui_version}"
 
     const val material_compose = "androidx.compose.material:material:${Versions.material_compose_version}"
+    const val material_3 = "androidx.compose.material3:material3:${Versions.material_3_version}"
     const val junit = "junit:junit:${Versions.junit_version}"
     const val test_ext_junit = "androidx.test.ext:junit:${Versions.test_ext_junit_version}"
     const val espresso_core = "androidx.test.espresso:espresso-core:${Versions.espresso_test_version}"

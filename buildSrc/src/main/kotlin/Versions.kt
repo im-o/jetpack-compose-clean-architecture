@@ -16,6 +16,7 @@ object Versions {
     const val lifecycle_ktx_version = "2.6.1"
     const val activity_compose_version = "1.7.1"
     const val material_compose_version = "1.3.1"
+    const val material_3_version = "1.1.2"
     const val junit_version = "4.13.2"
     const val test_ext_junit_version = "1.1.5"
     const val espresso_test_version = "3.5.1"
