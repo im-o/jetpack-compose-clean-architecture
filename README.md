@@ -39,8 +39,10 @@ backend concerns behind. Get ready for some serious fun! 😎
   data from a SQLite database, with an intuitive API and robust feature set. Whether you're building a simple to-do list app or a complex CRM system, Room has everything you need.
 - [Accompanist Pager 📜](https://github.com/google/accompanist/tree/main/pager) - Looking to add some slick page navigation to your app? Accompanist Pager is the library for you! With a range of
   customizable options and an intuitive API, this library makes it easy to create stunning page layouts that will keep your users engaged and coming back for more.
-- [Material Compose 💄](https://github.com/material-components/material-components-android-compose) - Want to make your app look and feel like a million bucks? Material Compose is the answer! This
-  library provides a range of customizable components and widgets that will make your app look sleek and polished, with an intuitive API that makes it easy to get started. Whether you're building a
+- [Material Compose 💄](https://github.com/material-components/material-components-android-compose) - Want to make your app look and feel like a
+  million bucks? Material Compose is the answer! This
+  library provides a range of customizable components and widgets that will make your app look sleek and polished, with an intuitive API that makes it
+  easy to get started. Whether you're building a
   small app or a massive enterprise system, Material Compose has everything you need to take your UI to the next level.
 
 ## Demo!
@@ -48,6 +50,24 @@ backend concerns behind. Get ready for some serious fun! 😎
 Check out this cool GIF of the app in action! 🎬
 
 <img src="https://github.com/im-o/jetpack-compose-clean-architecture/assets/22957498/7e65c36b-e2d0-4085-887a-db3d1a581ad4" alt="Compose Usecase Pattern" height="600"/>
+
+## TODO
+
+- [x] Setup modularization.
+- [x] Set up a local database with Room.
+- [x] Set up remote data with retrofit.
+- [x] Implement the repository pattern.
+- [x] Implement the use-case pattern.
+- [x] Set up dependency injection with Hilt.
+- [x] Migrate to Compose Material 3.
+- [ ] [In progress] Update the home UI to an adaptive layout (bottom navigation, navigation rail, navigation drawer).
+- [x] Implement unit testing.
+- [ ] Implement UI/Instrumented Testing.
+
+## Future
+
+- [ ] Plan migration from Room to SQLDelight.
+- [ ] Plan migration from Retrofit to Ktor.
 
 ## Setup Requirements
 
