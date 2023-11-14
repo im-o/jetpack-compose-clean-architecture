@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -16,9 +18,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import id.barakkastudio.core.R
 import id.barakkastudio.core.ui.theme.Gray200
+import id.barakkastudio.core.util.Dimens
 import id.barakkastudio.sample.ui.profile.section.ProfileContent
 
 /** Created by github.com/im-o on 12/12/2022. */
@@ -31,7 +33,7 @@ fun ProfileScreen() {
                 title = {
                     Text(text = stringResource(R.string.profile))
                 },
-                colors = TopAppBarDefaults.smallTopAppBarColors(
+                colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primary,
                     titleContentColor = Color.White,
                 ),
@@ -46,10 +48,11 @@ fun ProfileScreen() {
             ) {
                 Column(
                     modifier = Modifier
+                        .verticalScroll(rememberScrollState())
                         .align(Alignment.TopCenter)
-                        .padding(32.dp)
-                        .fillMaxWidth(),
-                    horizontalAlignment = Alignment.CenterHorizontally,
+                        .fillMaxWidth()
+                        .padding(Dimens.dp32),
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     ProfileContent()
                 }

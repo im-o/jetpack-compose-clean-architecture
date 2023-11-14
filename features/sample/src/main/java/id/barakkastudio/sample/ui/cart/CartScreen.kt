@@ -35,7 +35,7 @@ fun CartScreen(
                 title = {
                     Text(text = stringResource(R.string.cart))
                 },
-                colors = TopAppBarDefaults.smallTopAppBarColors(
+                colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primary,
                     titleContentColor = Color.White,
                 ),
