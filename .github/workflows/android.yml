@@ -1,15 +1,22 @@
 name: Android CI
 
+env:
+  # The name of the main module repository
+  main_project_module: app
+
+  # The name of Developer
+  dev_name: rivaldy
+
 on:
   push:
     branches:
       - master
       - develop
       - staging
-      - usecase-pattern
+      - develop-M3
 
-  pull_request:
-    branches: [ develop ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
   build:
@@ -17,86 +24,73 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - name: set up JDK 11
-        uses: actions/setup-java@v2
-        with:
-          java-version: '11'
-          distribution: 'adopt'
-          cache: gradle
+      - uses: actions/checkout@v3
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-      - name: Build with Gradle
+      # Set Current Date As Env Variable
+      - name: Set current date as env variable
+        run: echo "date_today=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+
+      # Set Repository Name As Env Variable
+      - name: Set repository name as env variable
+        run: echo "repository_name=$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')" >> $GITHUB_ENV
+
+      - name: Set Up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu' # See 'Supported distributions' for available options
+          java-version: '17'
+          cache: 'gradle'
+
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
+
+      # Run Tests Build
+      - name: Run gradle tests
+        run: ./gradlew test
+
+      # Run Build Project
+      - name: Build gradle project
         run: ./gradlew build
-  
-  test:
 
-    name: Run Unit Tests
-    runs-on: ubuntu-latest
-    
-    steps:
-      - uses: actions/checkout@v2
-      - name: set up JDK 11
-        uses: actions/setup-java@v2
+      # Create APK Debug
+      - name: Build apk debug project (APK)-${{ env.main_project_module }} module
+        run: ./gradlew assembleDebug
+
+      # Create APK Release
+      - name: Build apk release project (APK)-${{ env.main_project_module }} module
+        run: ./gradlew assemble
+
+      # Create Bundle AAB Release
+      # Noted for main module build [main_project_module]:bundleRelease
+      - name: Build app bundle release (AAB)-${{ env.main_project_module }} module
+        run: ./gradlew ${{ env.main_project_module }}:bundleRelease
+
+      # Upload Artifact Build
+      # Noted For Output [main_project_module]/build/outputs/apk/debug/app-debug.apk
+      - name: Upload file debug-${{ env.repository_name }}.apk
+        uses: actions/upload-artifact@v3
         with:
-          java-version: '11'
-          distribution: 'adopt'
-          cache: gradle
+          name: ${{ env.date_today }}-${{ env.dev_name }}-${{ env.repository_name }}.apk
+          path: ${{ env.main_project_module }}/build/outputs/apk/debug/app-debug.apk
 
-      - name: Run Tests
-        run: bash ./gradlew test --stacktrace
-
-  apk:
-
-    name: Generate APK
-    needs: test
-    runs-on: ubuntu-latest
-    
-    steps:
-      - uses: actions/checkout@v2
-      - name: set up JDK 11
-        uses: actions/setup-java@v2
+      # Upload Artifact Build
+      # Noted For Output [main_project_module]/build/outputs/apk/debug/
+      - name: Upload APK Debug-${{ env.repository_name }}
+        uses: actions/upload-artifact@v3
         with:
-          java-version: '11'
-          distribution: 'adopt'
-          cache: gradle
+          name: ${{ env.date_today }}-${{ env.dev_name }}-${{ env.repository_name }}-APK(s) debug generated
+          path: ${{ env.main_project_module }}/build/outputs/apk/debug/
 
-      - name: Build APK
-        run: bash ./gradlew assembleDebug --stacktrace
-      - name: Upload APK
-        uses: actions/upload-artifact@v1
+      # Noted For Output [main_project_module]/build/outputs/apk/release/
+      - name: Upload APK Release-${{ env.repository_name }}
+        uses: actions/upload-artifact@v3
         with:
-          name: apk
-          path: app/build/outputs/apk/debug/app-debug.apk
+          name: ${{ env.date_today }}-${{ env.dev_name }}-${{ env.repository_name }}-APK(s) release generated
+          path: ${{ env.main_project_module }}/build/outputs/apk/release/
 
-    #   release:
-
-    #     name: Release APK
-    #     needs: apk
-    #     if: startsWith(github.ref, 'refs/tags/v')
-    #     runs-on: ubuntu-latest
-
-#     steps:
-#       - name: Download APK from build
-#         uses: actions/download-artifact@v1
-#         with:
-#           name: apk  
-#       - name: Create Release
-#         id: create_release
-#         uses: actions/create-release@v1
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
-#         with:
-#           tag_name: ${{ github.ref }}
-#           release_name: Release ${{ github.ref }} 
-#       - name: Upload Release APK
-#         id: upload_release_asset
-#         uses: actions/upload-release-asset@v1.0.1
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#         with:
-#           upload_url: ${{ steps.create_release.outputs.upload_url }}
-#           asset_path: apk/app-debug.apk
-#           asset_name: CocktailApp.apk
-#           asset_content_type: application/zip
+      # Noted For Output [main_project_module]/build/outputs/bundle/release/
+      - name: Upload AAB (App Bundle) Release-${{ env.repository_name }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.date_today }}-${{ env.dev_name }}-${{ env.repository_name }}-App bundle(s) AAB release generated
+          path: ${{ env.main_project_module }}/build/outputs/bundle/release/
