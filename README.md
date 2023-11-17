@@ -60,7 +60,7 @@ Check out this cool GIF of the app in action! 🎬
 - [x] Implement the use-case pattern.
 - [x] Set up dependency injection with Hilt.
 - [x] Migrate to Compose Material 3.
-- [ ] [In progress] Update the home UI to an adaptive layout (bottom navigation, navigation rail, navigation drawer).
+- [x] Update the home UI to an adaptive layout (bottom navigation, navigation rail, navigation drawer).
 - [x] Implement unit testing.
 - [ ] Implement UI/Instrumented Testing.
 

@@ -11,6 +11,7 @@ import androidx.navigation.compose.rememberNavController
 import id.barakkastudio.core.ui.theme.JetShopeeTheme
 import id.barakkastudio.nebenginaja.utils.JetNavigationType
 import id.barakkastudio.sample.ui.navigation.BottomNav
+import id.barakkastudio.sample.ui.navigation.NavRail
 import id.barakkastudio.sample.ui.navigation.model.BottomBarScreen
 import id.barakkastudio.sample.ui.navigation.navdrawer.NavDrawer
 
@@ -31,20 +32,33 @@ fun JetMainScreen(
         BottomBarScreen.Profile
     )
 
-    if (navigationType == JetNavigationType.BOTTOM_NAVIGATION) {
-        BottomNav(
-            modifier = modifier,
-            navigationItemContentList = navigationItemContentList,
-            navController = navController,
-            currentDestination = currentDestination,
-        )
-    } else if (navigationType == JetNavigationType.NAVIGATION_RAIL) {
-        NavDrawer(
-            modifier = modifier,
-            navigationItemContentList = navigationItemContentList,
-            navController = navController,
-            currentDestination = currentDestination,
-        )
+    when (navigationType) {
+        JetNavigationType.BOTTOM_NAVIGATION -> {
+            BottomNav(
+                modifier = modifier,
+                navigationItemContentList = navigationItemContentList,
+                navController = navController,
+                currentDestination = currentDestination,
+            )
+        }
+
+        JetNavigationType.NAVIGATION_RAIL -> {
+            NavRail(
+                modifier = modifier,
+                navigationItemContentList = navigationItemContentList,
+                navController = navController,
+                currentDestination = currentDestination,
+            )
+        }
+
+        JetNavigationType.PERMANENT_NAVIGATION_DRAWER -> {
+            NavDrawer(
+                modifier = modifier,
+                navigationItemContentList = navigationItemContentList,
+                navController = navController,
+                currentDestination = currentDestination,
+            )
+        }
     }
 }
 
